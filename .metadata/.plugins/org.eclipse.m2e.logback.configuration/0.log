@@ -1,0 +1,195 @@
+2018-02-10 11:20:31,880 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-10 11:46:31,754 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 11:46:35,461 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:46:35,471 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 11:46:35,474 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:46:35,484 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 11:46:35,541 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /COMP4601-SDA/src
+2018-02-10 11:46:35,544 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /COMP4601-SDA/src/test/java because it overlaps with /COMP4601-SDA/src
+2018-02-10 11:46:36,311 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-02-10 11:46:37,257 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 11:46:38,841 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /COMP4601-SDA/src
+2018-02-10 11:46:38,842 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /COMP4601-SDA/src/test/java because it overlaps with /COMP4601-SDA/src
+2018-02-10 11:46:39,501 [Worker-16] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for COMP4601-SDA
+2018-02-10 11:46:39,545 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2018-02-10 11:46:39,881 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:46:39,903 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 11:46:39,982 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:46:40,001 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 11:46:40,002 [Worker-22] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of COMP4601-SDA
+2018-02-10 11:46:40,003 [Worker-22] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for COMP4601-SDA
+2018-02-10 11:46:40,035 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven.plugins:maven-clean-plugin:jar:2.5 is missing, no dependency information available
+2018-02-10 11:46:40,069 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:53:59,194 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\iamro\assignmentone\COMP4601-SDA
+2018-02-10 11:53:59,195 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2018-02-10 11:54:04,018 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:54:04,032 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 11:54:04,040 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 11:54:04,046 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:00:13,688 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:13,695 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:00:13,697 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:13,707 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:00:19,530 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:19,556 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:00:19,569 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:19,579 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:00:48,329 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-02-10 12:00:48,909 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 12:00:49,793 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /COMP4601-SDA/src
+2018-02-10 12:00:49,794 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /COMP4601-SDA/src/test/java because it overlaps with /COMP4601-SDA/src
+2018-02-10 12:00:50,244 [Worker-12] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for COMP4601-SDA
+2018-02-10 12:00:50,257 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2018-02-10 12:00:50,491 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:50,507 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:00:50,517 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:00:50,575 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:00:50,590 [Worker-25] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of COMP4601-SDA
+2018-02-10 12:00:50,590 [Worker-25] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for COMP4601-SDA
+2018-02-10 12:00:50,605 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:01:12,447 [Worker-29] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\iamro\assignmentone\COMP4601-SDA
+2018-02-10 12:01:12,447 [Worker-29] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2018-02-10 12:01:21,404 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:01:21,416 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:01:21,418 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:01:21,425 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:09:19,406 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:09:19,422 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:09:19,424 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:09:19,438 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:09:28,424 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:09:28,440 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:09:28,447 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:09:28,462 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:12:32,671 [Worker-34] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 12:12:32,936 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/6.4.0/lucene-core-6.4.0.pom
+2018-02-10 12:12:33,015 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/6.4.0/lucene-core-6.4.0.pom
+2018-02-10 12:12:33,059 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-parent/6.4.0/lucene-parent-6.4.0.pom
+2018-02-10 12:12:33,092 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-parent/6.4.0/lucene-parent-6.4.0.pom
+2018-02-10 12:12:33,139 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-solr-grandparent/6.4.0/lucene-solr-grandparent-6.4.0.pom
+2018-02-10 12:12:33,289 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-solr-grandparent/6.4.0/lucene-solr-grandparent-6.4.0.pom
+2018-02-10 12:12:33,354 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/6.4.0/lucene-queries-6.4.0.pom
+2018-02-10 12:12:33,389 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/6.4.0/lucene-queries-6.4.0.pom
+2018-02-10 12:12:33,446 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/6.4.0/lucene-queryparser-6.4.0.pom
+2018-02-10 12:12:33,487 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/6.4.0/lucene-queryparser-6.4.0.pom
+2018-02-10 12:12:33,531 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/6.4.0/lucene-sandbox-6.4.0.pom
+2018-02-10 12:12:33,604 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/6.4.0/lucene-sandbox-6.4.0.pom
+2018-02-10 12:12:33,677 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-bundle/1.19.1/jersey-bundle-1.19.1.pom
+2018-02-10 12:12:33,735 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-bundle/1.19.1/jersey-bundle-1.19.1.pom
+2018-02-10 12:12:33,770 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.19.1/jersey-project-1.19.1.pom
+2018-02-10 12:12:33,805 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.19.1/jersey-project-1.19.1.pom
+2018-02-10 12:12:33,871 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/jettison/jettison/1.3.3/jettison-1.3.3.pom
+2018-02-10 12:12:33,969 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/jettison/jettison/1.3.3/jettison-1.3.3.pom
+2018-02-10 12:12:34,000 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/codehaus-parent/3/codehaus-parent-3.pom
+2018-02-10 12:12:34,039 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/codehaus-parent/3/codehaus-parent-3.pom
+2018-02-10 12:12:34,081 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/stax/stax-api/1.0.1/stax-api-1.0.1.pom
+2018-02-10 12:12:34,108 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/stax/stax-api/1.0.1/stax-api-1.0.1.pom
+2018-02-10 12:12:34,217 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/6.4.0/lucene-core-6.4.0.jar
+2018-02-10 12:12:35,024 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/6.4.0/lucene-core-6.4.0.jar
+2018-02-10 12:12:35,046 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/6.4.0/lucene-queries-6.4.0.jar
+2018-02-10 12:12:35,106 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/6.4.0/lucene-queries-6.4.0.jar
+2018-02-10 12:12:35,131 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/6.4.0/lucene-queryparser-6.4.0.jar
+2018-02-10 12:12:35,202 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/6.4.0/lucene-queryparser-6.4.0.jar
+2018-02-10 12:12:35,225 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/6.4.0/lucene-sandbox-6.4.0.jar
+2018-02-10 12:12:35,289 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/6.4.0/lucene-sandbox-6.4.0.jar
+2018-02-10 12:12:35,399 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-bundle/1.19.1/jersey-bundle-1.19.1.jar
+2018-02-10 12:12:35,659 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-bundle/1.19.1/jersey-bundle-1.19.1.jar
+2018-02-10 12:12:35,701 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/jettison/jettison/1.3.3/jettison-1.3.3.jar
+2018-02-10 12:12:35,753 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/jettison/jettison/1.3.3/jettison-1.3.3.jar
+2018-02-10 12:12:35,766 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/stax/stax-api/1.0.1/stax-api-1.0.1.jar
+2018-02-10 12:12:35,950 [Worker-34] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/stax/stax-api/1.0.1/stax-api-1.0.1.jar
+2018-02-10 12:12:38,183 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:12:38,189 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:12:38,192 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:12:38,199 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:12:38,205 [Worker-34] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of COMP4601-SDA
+2018-02-10 12:12:38,205 [Worker-34] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for COMP4601-SDA
+2018-02-10 12:12:38,214 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:12:41,179 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:12:41,661 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:12:41,678 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:12:41,922 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:13:15,949 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:13:15,964 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:13:15,973 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:13:15,990 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:20:41,983 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:20:42,006 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:20:42,032 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:20:42,050 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:21:11,353 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:21:11,368 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:21:11,377 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:21:11,398 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:22:36,108 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:36,120 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:22:36,126 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:36,138 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:22:43,257 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:43,269 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:22:43,276 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:43,286 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:22:47,154 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:47,165 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:22:47,172 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:22:47,185 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:23:01,983 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:23:01,996 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:23:02,001 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:23:02,012 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:25:54,758 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:25:54,771 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:25:54,777 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:25:54,788 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:26:47,928 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:26:47,954 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:26:47,962 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:26:47,977 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:28:25,500 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:28:25,514 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:28:25,520 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:28:25,530 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:30:33,990 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:30:34,011 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:30:34,026 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:30:34,044 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:38:10,998 [Worker-42] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 12:38:11,363 [Worker-42] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.6.2/mongo-java-driver-3.6.2.pom
+2018-02-10 12:38:11,443 [Worker-42] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.6.2/mongo-java-driver-3.6.2.pom
+2018-02-10 12:38:11,558 [Worker-42] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.6.2/mongo-java-driver-3.6.2.jar
+2018-02-10 12:38:11,929 [Worker-42] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.6.2/mongo-java-driver-3.6.2.jar
+2018-02-10 12:38:13,162 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:38:13,172 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:38:13,180 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:38:13,196 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:38:13,202 [Worker-42] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of COMP4601-SDA
+2018-02-10 12:38:13,202 [Worker-42] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for COMP4601-SDA
+2018-02-10 12:38:13,210 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:38:14,768 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:38:14,780 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:38:14,788 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:38:14,799 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:39:27,612 [Worker-38] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: COMP4601-SDA:COMP4601-SDA:0.0.1-SNAPSHOT @ C:\Users\iamro\assignmentone\COMP4601-SDA\pom.xml.
+2018-02-10 12:39:27,917 [Worker-38] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.4.1/mongo-java-driver-3.4.1.pom
+2018-02-10 12:39:27,987 [Worker-38] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.4.1/mongo-java-driver-3.4.1.pom
+2018-02-10 12:39:28,111 [Worker-38] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.4.1/mongo-java-driver-3.4.1.jar
+2018-02-10 12:39:28,537 [Worker-38] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mongodb/mongo-java-driver/3.4.1/mongo-java-driver-3.4.1.jar
+2018-02-10 12:39:29,462 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:39:29,469 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:39:29,475 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:39:29,488 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:39:29,494 [Worker-38] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of COMP4601-SDA
+2018-02-10 12:39:29,494 [Worker-38] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for COMP4601-SDA
+2018-02-10 12:39:29,499 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:39:31,488 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:39:31,641 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:39:31,650 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:39:31,667 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:44:51,351 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:44:51,363 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:44:51,369 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:44:51,381 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources
+2018-02-10 12:45:37,836 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:45:37,866 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\main\resources
+2018-02-10 12:45:37,874 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-02-10 12:45:37,889 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\iamro\assignmentone\COMP4601-SDA\src\test\resources

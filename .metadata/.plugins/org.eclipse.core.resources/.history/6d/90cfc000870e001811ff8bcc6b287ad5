@@ -1,0 +1,23 @@
+package edu.carleton.comp4601.resources;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+
+
+
+@Path("/sda")
+public class SearchableDocumentArchive {
+	//Default things we assume we need...
+	//WE ADDED: Catalina and Tomcat-cayote to fi project setup
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
+	
+	private String name;
+	public SearchableDocumentArchive(){
+		name = "COMP4601 Searchable Document Archive V2.1: Luke Daschko and Mat Schmid";
+	}
+	
+
+}
