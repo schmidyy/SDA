@@ -1,0 +1,27 @@
+package edu.carleton.comp4601.resources;
+
+import javax.ws.rs.DELETE;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.UriInfo;
+
+public class DocAction {
+	//Default stuff we assume we need...
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
+	String id;
+
+	public DocAction(UriInfo uriInfo, Request request, String id) {
+		this.uriInfo = uriInfo;
+		this.request = request;
+		this.id = id;
+	}
+	
+	@DELETE
+	public void deleteDocument() {
+		System.out.println("Delete by id Test, " + "{"+id+"} " +  "= Success");
+	}
+
+}
