@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -128,38 +127,18 @@ public class Document {
 		json.put("tags", tags);
 		json.put("links", links);
 		
+		
 		return json;
 	}
-	
-	public void documentify(JSONObject in_json) throws JSONException {
-		
-		//Step One: Fill up this Docuemnt with easy datatypes 
-		this.setId(in_json.getInt("id"));
-		this.setScore(in_json.getDouble("score"));
-		this.setName(in_json.getString("name"));
-		this.setUrl(in_json.getString("url"));
-		this.setText(in_json.getString("text"));
-		
-		
-		//Step Two: create new new Lists that this Docuement will take in
-		ArrayList<String> newTags = new ArrayList<String>();
-		ArrayList<String> newLinks = new ArrayList<String>();
-		
-	
-		//Step Three: Fill up these Lists
-		JSONArray in_links = in_json.getJSONArray("links");
-		JSONArray in_tags = in_json.getJSONArray("tags");
-		for(int i = 0; i<in_links.length(); i++){
-			newLinks.add(in_links.getString(i));
-		}
-		for(int i = 0; i<in_tags.length(); i++){
-			newTags.add(in_tags.getString(i));
-		}
-		
-		//Step Four: Set this Docuement with the new (populated) Lists
-		this.setLinks(newLinks);
-		this.setTags(newTags);
-		
+	/*
+	public void documentify(JSONObject in_json) {
+		this.setId(in_json.getString("id"));
+		this.setScore(score);
+		this.setName(name);
+		this.setUrl(url);
+		this.setText(text);
+		this.setLinks(links);
+		this.setTags(tags);
 	}
-	
+	*/
 }

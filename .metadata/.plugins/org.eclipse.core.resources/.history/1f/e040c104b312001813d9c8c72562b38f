@@ -73,7 +73,6 @@ public class DocumentCollection {
 				searchDocument.setName((String) doc.get("name"));
 				searchDocument.setTags((ArrayList<String>) doc.get("tags"));
 				searchDocument.setScore((double) doc.get("score"));
-				searchDocument.setText((String) doc.get("text"));
 				searchDocument.setUrl((String) doc.get("url"));
 			}
 	    }
