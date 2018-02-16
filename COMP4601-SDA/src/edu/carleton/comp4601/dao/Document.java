@@ -5,12 +5,17 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 @XmlRootElement
 public class Document {
 	private Integer id;
-	private Float score;
+	private double score; //Originally was Float, but we dont fuck with that
 	private String name;
 	private String url;
+	JSONObject json; //We added this code aswell
+	
 	
 
 	private String text;
@@ -51,11 +56,11 @@ public class Document {
 		return id;
 	}
 
-	public void setScore(Float score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 
-	public Float getScore() {
+	public double getScore() {
 		return score;
 	}
 
@@ -109,5 +114,18 @@ public class Document {
 
 	public void removeLink(String link) {
 		links.remove(link);
+	}
+	
+	public JSONObject jsonify() throws JSONException{
+		json = new JSONObject();
+		json.put("id", String.valueOf(id));
+		json.put("score", String.valueOf(score));
+		json.put("url", url);
+		json.put("name", name);
+		json.put("text", text);
+		json.put("tags", String.join(", ", tags));
+		json.put("links", String.join(", ", links));
+		
+		return json;
 	}
 }

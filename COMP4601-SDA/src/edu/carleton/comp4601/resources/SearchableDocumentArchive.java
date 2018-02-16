@@ -16,6 +16,8 @@ import javax.ws.rs.core.UriInfo;
 import edu.carleton.comp4601.dao.*;
 import edu.carleton.comp4601.resources.*;
 
+import javax.ws.rs.core.Response;
+
 @Path("/sda")
 public class SearchableDocumentArchive {
 	//Default things we assume we need...
@@ -26,12 +28,12 @@ public class SearchableDocumentArchive {
 	private String name;
  
 	
-	//MyMongoDB db;
+	DocumentCollection documents;
 	
 	//Constructor
 	public SearchableDocumentArchive(){
 		name = "COMP4601 Searchable Document Archive V2.1: Luke Daschko and Mat Schmid";
-		//db = MyMongoDB.getInstance();
+		documents = DocumentCollection.getInstance();
 	}
 	
 	//Testing Functions
@@ -63,12 +65,15 @@ public class SearchableDocumentArchive {
 	}
 	
 	@POST
-	public void makeDocument() {
-		System.out.println("makeDocument() Test = Success"); 
+	public Response makeDocument() {
+		documents.add();
+		Response res = Response.ok().build();
+		
+		return res;
 	}
 	
 	@Path("{doc}")
-	public DocAction getDocument(@PathParam("doc") String id) {
+	public DocAction getDocument(@PathParam("doc") Integer id) {
 		return new DocAction(uriInfo, request, id);
 	}
 	

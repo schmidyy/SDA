@@ -1,5 +1,7 @@
 package edu.carleton.comp4601.resources;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,6 +11,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
+import edu.carleton.comp4601.dao.DocumentCollection;
+
+import javax.ws.rs.core.Response;
+
 public class DocAction {
 	//Default stuff we assume we need...
 	@Context
@@ -16,32 +25,77 @@ public class DocAction {
 	@Context
 	Request request;
 	
-	String id;
+	Integer id;
 	String rawtags;
+	DocumentCollection documents;
+	MyMongoDB db;
 
-	public DocAction(UriInfo uriInfo, Request request, String id) {
+	public DocAction(UriInfo uriInfo, Request request, Integer id) {
 		this.uriInfo = uriInfo;
 		this.request = request;
 		this.id = id;
+		documents = DocumentCollection.getInstance();
 	}
 	
 	@DELETE
-	public void deleteDocument() {
-		//Code here would try and delete Document from db/DocumentsCollection
-		System.out.println("Delete by id Test, " + "{"+id+"} " +  "= Success");
+	public Response deleteDocument() {
+		Response res;
+		if (documents.find(id) != null){
+			documents.delete(id);
+			res = Response.ok().build();
+			System.out.println("Delete by id Test, " + "{"+id+"} " +  "= Success");
+		}else{
+			res = Response.created(uriInfo.getAbsolutePath()).build();
+		}
+		
+		return res;
 	}
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getDocument() {
-		//Code here would make sure document exists before returning it
-		System.out.println("Show by id Test, " + "{"+id+"}"  + "= Success");
-		return id;
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject getDocument() throws JSONException {
+		edu.carleton.comp4601.dao.Document getDoc = documents.find(id);
+		if (getDoc == null){
+			throw new RuntimeException("No such user: " + id);
+		}else{
+			System.out.println("GET Success!: " + id);
+		}
+		return getDoc.jsonify();
 	}
 	
 	@POST
-	public void updateDocuments() {
+	//Should have new Document in parameter...
+	public Response updateDocuments() {
+		Response res;
+		edu.carleton.comp4601.dao.Document oldDocument = documents.find(id);
+		if (oldDocument != null){
+			//Test Code: create newDoc rather than have one passed through params.S
+			edu.carleton.comp4601.dao.Document testDoc = new edu.carleton.comp4601.dao.Document();
+			testDoc.setId(1);
+			ArrayList<String> links = new ArrayList<String>();
+			links.add("Link1U");
+			links.add("Link2U");
+			links.add("Link3U");
+			testDoc.setLinks(links);
+			testDoc.setName("Test Name");
+			ArrayList<String> tags = new ArrayList<String>();
+			tags.add("Tag1U");
+			tags.add("Tag2U");
+			tags.add("Tag3U");
+			testDoc.setTags(tags);
+			testDoc.setScore(66.66);
+			testDoc.setUrl("www.testU.com");
+			testDoc.setText("Test Text UPDATE");
+			
+			
+			documents.update(oldDocument.getId(), testDoc);
+			res = Response.ok().build();
 			System.out.println("Update by id Test, " + "{"+id+"}" + "= Success");
+		}else{
+			res = Response.created(uriInfo.getAbsolutePath()).build();
+		}
+		
+		return res;	
 	}
 	
 	

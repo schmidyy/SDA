@@ -2,9 +2,12 @@ package edu.carleton.comp4601.resources;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class MyMongoDB {
 	
@@ -23,6 +26,7 @@ public class MyMongoDB {
 	private MongoClient mongoClient;
    	private MongoDatabase database;
    	MongoCollection<Document> coll; //note: this is not the Document provided by prof
+   	MongoCursor<Document> cur;
 	
 	//Constructor
 	public MyMongoDB(){
@@ -31,10 +35,6 @@ public class MyMongoDB {
 		database = mongoClient.getDatabase("SDAdb");
 		coll = database.getCollection("testColl"); 
 		
-		//Test DB code
-		Document doc = new Document("name", "Andrew Erlichson");
-                 
-        coll.insertOne(doc); // first insert 
 		
 		/* Syntax (post depricated DB)
 		Document doc = new Document("name", "Andrew Erlichson")// 
@@ -46,6 +46,35 @@ public class MyMongoDB {
         more at: https://www.programcreek.com/java-api-examples/index.php?class=com.mongodb.MongoClient&method=getDatabase
         */
 	}
+	
+	public MongoCollection<Document> getCollection(){
+		
+		
+		return coll;
+	}
+	
+	public MongoCursor<Document> getCursor(){
+		 cur = coll.find().iterator();
+		 return cur;
+	}
+	
+	public void add(edu.carleton.comp4601.dao.Document profDoc){
+		Document doc = new Document("id", profDoc.getId()) //Not prof Document, Mongo Document
+                .append("name", profDoc.getName()) 
+				.append("score", profDoc.getScore())
+				.append("text", profDoc.getText())
+				.append("url", profDoc.getUrl())
+				.append("tags", profDoc.getTags())
+				.append("links", profDoc.getLinks());
+		
+		coll.insertOne(doc);
+	}
+	
+	
+	public void delete(Integer id){
+		coll.deleteOne(new Document("id", id));
+	}
+	
 	
 	
 

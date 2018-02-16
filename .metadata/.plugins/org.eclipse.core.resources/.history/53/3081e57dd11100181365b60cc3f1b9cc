@@ -1,0 +1,72 @@
+package edu.carleton.comp4601.resources;
+
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.UriInfo;
+
+import edu.carleton.comp4601.dao.DocumentCollection;
+
+import javax.ws.rs.core.Response;
+
+public class DocAction {
+	//Default stuff we assume we need...
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
+	
+	Integer id;
+	String rawtags;
+	DocumentCollection documents;
+	MyMongoDB db;
+
+	public DocAction(UriInfo uriInfo, Request request, Integer id) {
+		this.uriInfo = uriInfo;
+		this.request = request;
+		this.id = id;
+		documents = DocumentCollection.getInstance();
+	}
+	
+	@DELETE
+	public Response deleteDocument() {
+		//Step One: Check if Document is in Mongo
+		if (documents.find(id) == null){
+			db.delete(id);
+		}else
+		
+		}
+		
+		//Step Two: Delete
+		
+		System.out.println("Delete by id Test, " + "{"+id+"} " +  "= Success");
+		Response res = Response.ok().build();
+		
+		return res;
+	}
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getDocument() {
+		//Code here would make sure document exists before returning it
+		System.out.println("Show by id Test, " + "{"+id+"}"  + "= Success");
+		return id;
+	}
+	
+	@POST
+	public void updateDocuments() {
+			//Step One: ensure it exists
+		
+			//Step Two: 
+		
+		
+			System.out.println("Update by id Test, " + "{"+id+"}" + "= Success");
+	}
+	
+	
+
+}
