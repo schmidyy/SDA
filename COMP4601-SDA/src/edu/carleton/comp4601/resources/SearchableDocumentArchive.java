@@ -3,8 +3,10 @@ package edu.carleton.comp4601.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -12,11 +14,19 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.bind.JAXBElement;
+
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import edu.carleton.comp4601.dao.*;
 import edu.carleton.comp4601.resources.*;
 
 import javax.ws.rs.core.Response;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Path("/sda")
 public class SearchableDocumentArchive {
@@ -65,10 +75,14 @@ public class SearchableDocumentArchive {
 	}
 	
 	@POST
-	public Response makeDocument() {
-		documents.add();
-		Response res = Response.ok().build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response makeDocument(edu.carleton.comp4601.dao.Document newDoc) {
+		System.out.println("HIT PUT");
+		//edu.carleton.comp4601.dao.Document newDoc = d.getValue();
 		
+		documents.add(newDoc);
+		
+		Response res = Response.ok().build();
 		return res;
 	}
 	

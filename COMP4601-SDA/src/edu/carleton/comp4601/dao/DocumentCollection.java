@@ -96,10 +96,10 @@ public class DocumentCollection {
 	    }
 	}
 	
-	public void add(){
+	public void add(edu.carleton.comp4601.dao.Document newdoc){
 	
 		//TEST CODE
-		
+		/*
 		edu.carleton.comp4601.dao.Document testDoc = new edu.carleton.comp4601.dao.Document();
 		testDoc.setId(1);
 		ArrayList<String> links = new ArrayList<String>();
@@ -116,9 +116,10 @@ public class DocumentCollection {
 		testDoc.setScore(66.66);
 		testDoc.setUrl("www.test.com");
 		testDoc.setText("Test Text");
-
-		if (find(testDoc.getId()) == null){
-			db.add(testDoc);
+		*/
+		
+		if (find(newdoc.getId()) == null){
+			db.add(newdoc);
 		}
 		else{
 			System.out.println("Failed to Add, this dudes is already in the Database, based off the Doc Id");

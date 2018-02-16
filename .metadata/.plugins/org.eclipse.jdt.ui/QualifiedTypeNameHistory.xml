@@ -24,4 +24,9 @@
 <fullyQualifiedTypeName name="com.mongodb.client.MongoCursor"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="edu.carleton.comp4601.dao.DocumentCollection"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+<fullyQualifiedTypeName name="javax.xml.bind.JAXBElement"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 </qualifiedTypeNameHistroy>
