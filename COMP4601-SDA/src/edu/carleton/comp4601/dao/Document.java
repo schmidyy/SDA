@@ -37,7 +37,7 @@ public class Document {
 	public Document(Map<?, ?> map) {
 		this();
 		this.id = (Integer) map.get("id");
-		this.score = (double) map.get("score");
+		this.score = (Double) map.get("score");
 		this.name = (String) map.get("name");
 		this.text = (String) map.get("text");
 		this.url = (String) map.get("url");

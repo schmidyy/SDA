@@ -23,7 +23,7 @@ import java.net.UnknownHostException;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DocumentCollection {
 	@XmlElement(name="documents")
-	private List<edu.carleton.comp4601.dao.Document> documents;
+	
 	
 	//Singelton Stuff
 	public static void setInstance(DocumentCollection instance) {
@@ -36,13 +36,16 @@ public class DocumentCollection {
 	}
 	private static DocumentCollection instance;
 	
+	
+	private List<edu.carleton.comp4601.dao.Document> documents;
+	
 	//Database Stuff
 	MyMongoDB db;
 	
 	public DocumentCollection(){
 		//Database connection
 		db = MyMongoDB.getInstance();
-		
+		documents = new ArrayList<edu.carleton.comp4601.dao.Document>();
 		
 		
 		
@@ -50,6 +53,7 @@ public class DocumentCollection {
 	}
 	
 	public List<edu.carleton.comp4601.dao.Document> getDocuments() {
+		this.populateList();
 		return documents;
 	}
 
@@ -136,12 +140,19 @@ public class DocumentCollection {
 	}
 	
 	public void populateList(){
-		documents.clear(); //this function will repopulate the list so we need to delete whats inside to avoid duplication
-		
+		System.out.println("Debug Flag 1");
+		if (!documents.isEmpty()){
+			documents.clear(); //this function will repopulate the list so we need to delete whats inside to avoid duplication
+		}
+		System.out.println("Debug Flag 2");
 		MongoCursor<Document> cursor = db.getCursor();
+		
+		System.out.println("Debug Flag 3");
 			while (cursor.hasNext()) {
+				System.out.println("Debug Flag 4");
 				Document doc = cursor.next(); //not Prof made Document class
 				
+				System.out.println("Debug Flag 5");
 				edu.carleton.comp4601.dao.Document ourDocument = new  edu.carleton.comp4601.dao.Document();
 				
 				ourDocument.setId((Integer) doc.get("id"));
@@ -151,7 +162,10 @@ public class DocumentCollection {
 				ourDocument.setScore((double) doc.get("score"));
 				ourDocument.setUrl((String) doc.get("url"));
 				
+				System.out.println("Debug Flag 6");
 			    documents.add(ourDocument);
+			    
+			    System.out.println("Debug Flag 7");
 		   }
 	}
 	

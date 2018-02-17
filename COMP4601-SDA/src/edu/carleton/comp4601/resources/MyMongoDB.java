@@ -6,10 +6,17 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+
+import java.io.IOException;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.jgrapht.graph.DefaultEdge;
+
+
 
 public class MyMongoDB {
+	
 	
 	//Singleton code
 	private static MyMongoDB instance;
@@ -26,6 +33,7 @@ public class MyMongoDB {
 	private MongoClient mongoClient;
    	private MongoDatabase database;
    	MongoCollection<Document> coll; //note: this is not the Document provided by prof
+   	MongoCollection<Document> collGraph;
    	MongoCursor<Document> cur;
 	
 	//Constructor
@@ -34,6 +42,7 @@ public class MyMongoDB {
 		mongoClient = new MongoClient("localhost", 27017);
 		database = mongoClient.getDatabase("SDAdb");
 		coll = database.getCollection("testColl"); 
+		collGraph = database.getCollection("GraphColletion"); 
 		
 		
 		/* Syntax (post depricated DB)
@@ -48,8 +57,6 @@ public class MyMongoDB {
 	}
 	
 	public MongoCollection<Document> getCollection(){
-		
-		
 		return coll;
 	}
 	
@@ -75,7 +82,14 @@ public class MyMongoDB {
 		coll.deleteOne(new Document("id", id));
 	}
 	
-	
+	public void storeEdge(DefaultEdge edge) throws IOException{
+    	byte[] seriEdge;
+    	seriEdge = Marshaller.serializeObject(edge);
+    	Document doc = new Document("edge", seriEdge);
+    	coll.insertOne(doc);
+    }
+
+
 	
 
 }

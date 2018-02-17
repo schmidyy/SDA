@@ -1,0 +1,22 @@
+package edu.carleton.comp4601.crawlerstuff;
+
+import java.io.IOException;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import edu.uci.ics.crawler4j.crawler.Page;
+import edu.uci.ics.crawler4j.crawler.WebCrawler;
+import edu.uci.ics.crawler4j.parser.HtmlParseData;
+import edu.uci.ics.crawler4j.url.WebURL;
+
+
+public class MyCrawler {
+	  private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|gif|jpg"
+              + "|png|mp3|mp4|zip|gz))$");
+	  
+	  //private MyGraph graph = MyGraph.getInstance();
+
+}

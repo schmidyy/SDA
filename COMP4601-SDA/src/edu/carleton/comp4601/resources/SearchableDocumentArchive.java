@@ -19,14 +19,18 @@ import javax.xml.bind.JAXBElement;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+//import edu.carleton.comp4601.crawlerstuff.Controller;
 import edu.carleton.comp4601.dao.*;
 import edu.carleton.comp4601.resources.*;
+import edu.carleton.comp4601.crawlerstuff.*;
 
 import javax.ws.rs.core.Response;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+
 
 @Path("/sda")
 public class SearchableDocumentArchive {
@@ -70,9 +74,23 @@ public class SearchableDocumentArchive {
 	@Path("documents")
 	@Produces(MediaType.TEXT_PLAIN)  //remove if returning array
 	public String getDocuments() {
-		System.out.println("Consolue Test = Success");
+		System.out.println("DOCUMENTS LIST:--> " + documents.getDocuments());
 		return "This is the TEST for getDocuments()";
 	}
+	
+	@GET
+	@Path("crawl")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String startCrawl(){
+		 try {
+			Controller.control();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "{ Crawl has started }";
+	}
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -22,7 +22,6 @@ import com.sun.jersey.api.representation.Form;
 
 import model.Document;
 
-
 public class ClientOne {
 	private static String REST = "rest";
 	private static String SDA = "sda";
@@ -113,12 +112,21 @@ public class ClientOne {
 			
 			
 		}
+		else if (cmd.equalsIgnoreCase("crawl")) {
+			System.out.println(service.path(REST).path(SDA).path("crawl").accept(MediaType.APPLICATION_JSON).get(String.class));
+		}
+		
 		else if (cmd.equalsIgnoreCase("deldoc")) {
 			documentID = s.nextInt();
 			
 			//Remove it
 			service.path(REST).path(SDA + "/" + documentID).delete();
 			return "Account " + documentID + " closed.";
+		}
+		else if (cmd.equalsIgnoreCase("crawl")) {
+			String responseC = service.path(REST).path(SDA).path("crawl").accept(MediaType.APPLICATION_JSON).get(String.class);
+			return responseC;
+			
 		}
 		return "Uknown command";
 	}

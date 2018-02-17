@@ -14,11 +14,13 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="TesterClient"/>
 			<item value="COMP4601-SDA"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="TesterClient"/>
 			<item value="COMP4601-SDA"/>
 		</list>
 		<list key="version">

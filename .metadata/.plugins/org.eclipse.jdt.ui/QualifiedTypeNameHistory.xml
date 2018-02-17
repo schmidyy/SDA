@@ -11,7 +11,6 @@
 <fullyQualifiedTypeName name="javax.ws.rs.core.UriInfo"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Request"/>
 <fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
@@ -29,4 +28,10 @@
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.xml.bind.JAXBElement"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="edu.carleton.comp4601.dao.Document"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PUT"/>
+<fullyQualifiedTypeName name="org.jgrapht.graph.DefaultEdge"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="edu.carleton.comp4601.crawlerstuff.Controller"/>
 </qualifiedTypeNameHistroy>

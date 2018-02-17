@@ -29,7 +29,7 @@
 		<groupId>com.sun.jersey</groupId>
 		<artifactId>jersey-json</artifactId>
 		<version>1.8</version>
-</dependency>
+    </dependency>
 	<dependency>
     	<groupId>org.codehaus.jettison</groupId>
     	<artifactId>jettison</artifactId>
@@ -49,6 +49,16 @@
 		<groupId>asm</groupId>
 		<artifactId>asm-all</artifactId>
 		<version>3.3.1</version>
+	</dependency>
+	<dependency>
+		<groupId>edu.uci.ics</groupId>
+		<artifactId>crawler4j</artifactId>
+		<version>4.3</version>
+	</dependency>
+    <dependency>
+   		<groupId>org.jgrapht</groupId>
+    	<artifactId>jgrapht-ext</artifactId>
+    	<version>0.9.1</version>
 	</dependency>
   </dependencies>
   <build>
