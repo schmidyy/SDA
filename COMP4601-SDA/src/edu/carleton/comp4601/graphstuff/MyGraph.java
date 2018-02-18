@@ -27,24 +27,20 @@ import java.util.List;
 
 public class MyGraph
 {
+	//Graph Variables
 	private static DirectedMultigraph<String, DefaultEdge> graph;
     
-    //DB Code
-   
+	//Database Variables
 	private MyMongoDB db;
 
-	//Singleton Code
+	//Singleton Variable+Methods
 	private static MyGraph instance = null;
+	public static void setInstance(MyGraph instance) { MyGraph.instance = instance; }
     public static MyGraph getInstance() {
-    	 if(instance == null) {
-	         instance = new MyGraph();
-	      }
-	      return instance;
+    	 if(instance == null) { instance = new MyGraph(); }
+	     return instance;
     }
-    public static void setInstance(MyGraph instance) {
-		MyGraph.instance = instance;
-	}
-	
+    
 	public MyGraph(){
     	graph = createGraph();
     	
@@ -75,15 +71,22 @@ public class MyGraph
 	    		//does the childs parent exist (it should)
 	    		System.out.println("PARENT URL: " + parentVertex.getURL());
 	    		graph.addVertex(childVertex.getURL());
-	    		db.storeEdge(graph.addEdge(parentVertex.getURL(), childVertex.getURL()));
+	    		graph.addEdge(parentVertex.getURL(), childVertex.getURL());
+	    		
+	    		
 	    		
 	    	}
     	}
-    	System.out.println("MY GRAPH: " + graph.edgeSet().toString());
+    	//Crude Visualization
+    	//System.out.println("MY GRAPH: " + graph.edgeSet().toString());
     	
     	
     }
-    
+    public void saveToDB() throws IOException{
+    	//Visualization Code
+		GraphLayoutVisualizer.visualizeGraph(graph);
+    	db.storeGraph(graph);
+    }
     
     
 }

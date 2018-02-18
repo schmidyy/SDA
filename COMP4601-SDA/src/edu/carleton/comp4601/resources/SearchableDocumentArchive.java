@@ -21,6 +21,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 //import edu.carleton.comp4601.crawlerstuff.Controller;
 import edu.carleton.comp4601.dao.*;
+import edu.carleton.comp4601.graphstuff.MyGraph;
 import edu.carleton.comp4601.resources.*;
 import edu.carleton.comp4601.crawlerstuff.*;
 
@@ -89,6 +90,7 @@ public class SearchableDocumentArchive {
 	public String startCrawl(){
 		 try {
 			Controller.control();
+			MyGraph.getInstance().saveToDB();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

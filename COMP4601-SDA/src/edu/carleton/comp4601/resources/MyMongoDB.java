@@ -12,6 +12,7 @@ import java.io.IOException;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DirectedMultigraph;
 
 
 
@@ -82,12 +83,13 @@ public class MyMongoDB {
 		coll.deleteOne(new Document("id", id));
 	}
 	
-	public void storeEdge(DefaultEdge edge) throws IOException{
-    	byte[] seriEdge;
-    	seriEdge = Marshaller.serializeObject(edge);
-    	Document doc = new Document("edge", seriEdge);
-    	coll.insertOne(doc);
-    }
+	public void storeGraph(DirectedMultigraph<String, DefaultEdge> graph) throws IOException{
+		byte[] seriGraph;
+    	seriGraph = Marshaller.serializeObject(graph);
+    	Document doc = new Document("edge", seriGraph);
+    	collGraph.insertOne(doc);
+	}
+    
 
 
 	

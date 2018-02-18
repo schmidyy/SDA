@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import edu.carleton.comp4601.graphstuff.MyGraph;
+import edu.carleton.comp4601.graphstuff.MyVertex;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
@@ -18,6 +20,9 @@ public class MyCrawler extends WebCrawler {
     private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|gif|jpg"
                                                            + "|png|mp3|mp4|zip|gz))$");
 
+    //Graph variable(s)
+    private MyGraph graph = MyGraph.getInstance();
+    
     /**
      * This method receives two parameters. The first parameter is the page
      * in which we have discovered this new url and the second parameter is
@@ -41,18 +46,37 @@ public class MyCrawler extends WebCrawler {
       */
      @Override
      public void visit(Page page) {
+    	 //Store the URL
          String url = page.getWebURL().getURL();
          System.out.println("URL: " + url);
 
+        
          if (page.getParseData() instanceof HtmlParseData) {
+        	 //Simple parsing of webpage
              HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();
-             String text = htmlParseData.getText();
-             String html = htmlParseData.getHtml();
-             Set<WebURL> links = htmlParseData.getOutgoingUrls();
+             String        text = htmlParseData.getText();
+             String        html = htmlParseData.getHtml();
+             Set<WebURL>   links = htmlParseData.getOutgoingUrls();
+             String        parent = page.getWebURL().getParentUrl();
 
              System.out.println("Text length: " + text.length());
              System.out.println("Html length: " + html.length());
              System.out.println("Number of outgoing links: " + links.size());
+             
+             //MyVertex creation
+             MyVertex cVertex = new MyVertex(url);
+             MyVertex parentVertex = null;
+             if (parent != null && (parent.compareTo(url) != 0)){
+            	 parentVertex = new MyVertex(parent);
+             }
+             
+             //Add MyVertex to Graph
+             try { graph.addVertex(cVertex, parentVertex);} 
+             catch (IOException e) { e.printStackTrace(); }    
          }
+         
+         
+         
+         
     }
 }
