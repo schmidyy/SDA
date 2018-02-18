@@ -7,9 +7,14 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
+
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import edu.carleton.comp4601.dao.DocumentCollection;
 
@@ -29,13 +34,44 @@ public class SearchTagAction {
 	public SearchTagAction(UriInfo uriInfo, Request request) {
 		this.uriInfo = uriInfo;
 		this.request = request;
+		documents = DocumentCollection.getInstance();
 	}
 	
 	//Cleans tags into list of tags
 	@GET
 	@Path("{tags}")
-	public void testSearch(@PathParam("tags") String rawtags){
-		System.out.println("testSearch Success = " + rawtags);
+	@Produces(MediaType.APPLICATION_JSON)
+	public String search(@PathParam("tags") String rawtags) {
+		
+		String jsonString="";
+		try {
+			jsonString = filter(rawtags);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonString;
+	}
+	
+	public String filter(String rawtags) throws JSONException{
+		JSONObject json = new JSONObject();
+		int jsonindex = 0;
+		//Step one: search threw document 
+			List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+			for(int i=0; i<docs.size(); i++){
+				edu.carleton.comp4601.dao.Document docAti = docs.get(i);
+		
+		//Step two: compare each document to see if it has ANY of the tags
+				List<String> taglist = Arrays.asList(rawtags.substring(0, rawtags.length()).split(","));
+				boolean isSubset = docAti.getTags().containsAll(taglist);
+				if (isSubset==true){
+		//Step three: Append documents we want to JSON object
+					jsonindex += 1;
+					json.put("index " + jsonindex, docAti.jsonify().toString());
+				}
+
+			}	
+		return json.toString();
 	}
 	
 	

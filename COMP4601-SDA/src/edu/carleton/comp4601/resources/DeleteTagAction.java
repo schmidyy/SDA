@@ -9,7 +9,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import edu.carleton.comp4601.dao.DocumentCollection;
 
@@ -35,13 +39,32 @@ public class DeleteTagAction {
 	//Cleans tags into list of tags
 	@Path("{tags}")
 	@GET
-	public void testSearch(@PathParam("tags") String rawtags){
+	public Response search(@PathParam("tags") String rawtags) throws JSONException{
 		System.out.println("Hello Flag");
-		documents.deleteByTag(rawtags);
-		System.out.println("deleteSearch Success = " + rawtags);
+		return filter(rawtags);
 	}
 	
-	
+	public Response filter(String rawtags) throws JSONException{
+		Response res = null;
+		
+		//Step one: search threw document 
+			List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+			for(int i=0; i<docs.size(); i++){
+				edu.carleton.comp4601.dao.Document docAti = docs.get(i);
+		
+		//Step two: compare each document to see if it has ANY of the tags
+				List<String> taglist = Arrays.asList(rawtags.substring(0, rawtags.length()).split(","));
+				boolean isSubset = docAti.getTags().containsAll(taglist);
+				res = Response.created(uriInfo.getAbsolutePath()).build();
+				if (isSubset==true){
+		//Step three: Delete
+					res =  Response.ok().build();
+					documents.delete(docAti.getId());
+				}
+
+			}	
+		return res;
+	}
 	
 	
 

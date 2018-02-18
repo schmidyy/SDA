@@ -46,10 +46,6 @@ public class DocumentCollection {
 		//Database connection
 		db = MyMongoDB.getInstance();
 		documents = new ArrayList<edu.carleton.comp4601.dao.Document>();
-		
-		
-		
-		//populateList();
 	}
 	
 	public List<edu.carleton.comp4601.dao.Document> getDocuments() {
@@ -137,6 +133,19 @@ public class DocumentCollection {
 	public void update(Integer oldInt, edu.carleton.comp4601.dao.Document updateDoc){
 		db.delete(oldInt);
 		db.add(updateDoc);
+	}
+	
+	public String printDocuments(){
+		String docs = "";
+		
+		//populate list
+		getDocuments();
+		
+		for(int i=0; i<documents.size(); i++){
+			edu.carleton.comp4601.dao.Document docAti = documents.get(i);
+			docs = docs + docAti.getName() + "\n";
+		}
+		return docs;
 	}
 	
 	public void populateList(){

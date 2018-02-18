@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -72,7 +73,7 @@ public class ClientOne {
 		if (cmd.equalsIgnoreCase("newdoc")) {
 			
 			//Order for user input: ID NAME SCORE URL TEXT
-			// newdoc 4 ClientName4 44 www.cilnet4.com Text4Client
+			// newdoc 3 ClientName3 33 www.cilnet3.com Text3Client
 			
 			//get user input to populate rest of Document varaibles
 			Document newDocument = new Document(s.nextInt());
@@ -110,23 +111,32 @@ public class ClientOne {
 			}
 			
 			
-			
-		}
-		else if (cmd.equalsIgnoreCase("crawl")) {
-			System.out.println(service.path(REST).path(SDA).path("crawl").accept(MediaType.APPLICATION_JSON).get(String.class));
-		}
-		
+		}	
 		else if (cmd.equalsIgnoreCase("deldoc")) {
 			documentID = s.nextInt();
-			
+
 			//Remove it
-			service.path(REST).path(SDA + "/" + documentID).delete();
-			return "Account " + documentID + " closed.";
+			ClientResponse response = service.path(REST).path(SDA + "/" + documentID).delete(ClientResponse.class);
+			return response.toString();
 		}
 		else if (cmd.equalsIgnoreCase("crawl")) {
 			String responseC = service.path(REST).path(SDA).path("crawl").accept(MediaType.APPLICATION_JSON).get(String.class);
 			return responseC;
 			
+		}
+		else if (cmd.equalsIgnoreCase("searchtag")){
+			String tags = s.next();
+			
+			String responseT = service.path(REST).path(SDA).path("search").path(tags).accept(MediaType.APPLICATION_JSON).get(String.class);
+			
+			return responseT;
+		}
+		else if (cmd.equalsIgnoreCase("deletetag")){
+			String tags = s.next();
+			
+			String responseT = service.path(REST).path(SDA).path("delete").path(tags).get(String.class);
+			
+			return responseT;
 		}
 		return "Uknown command";
 	}

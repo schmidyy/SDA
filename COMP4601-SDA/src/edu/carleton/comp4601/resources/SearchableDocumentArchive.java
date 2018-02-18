@@ -70,13 +70,18 @@ public class SearchableDocumentArchive {
 	
 	}
 	
+	
 	@GET
-	@Path("documents")
-	@Produces(MediaType.TEXT_PLAIN)  //remove if returning array
-	public String getDocuments() {
-		System.out.println("DOCUMENTS LIST:--> " + documents.getDocuments());
-		return "This is the TEST for getDocuments()";
-	}
+    @Path("documents")
+    @Produces(MediaType.APPLICATION_JSON)  //remove if returning array
+    public JSONObject getDocuments() throws JSONException {
+        List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+        JSONObject arr = new JSONObject();
+        for (edu.carleton.comp4601.dao.Document doc: docs) {
+            arr.put(String.valueOf(doc.getId()), doc.jsonify());
+        }
+        return arr;
+    }
 	
 	@GET
 	@Path("crawl")
