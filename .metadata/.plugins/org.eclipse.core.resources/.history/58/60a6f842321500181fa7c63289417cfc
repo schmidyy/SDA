@@ -82,76 +82,84 @@ public class MyCrawler extends WebCrawler {
          System.out.println("URL: " + url);
          
          //Variables used to fill Document (later)
-         String text                 = null;
-         Set<WebURL> links           = null;
-         HtmlParseData htmlParseData = null;
-         String tikaParseddata       = null;
-         String tikaMetadata         = null;
-         
+         String text;
+         Set<WebURL> links;
+         HtmlParseData htmlParseData;
+        
          if (page.getParseData() instanceof HtmlParseData) {
         	 htmlParseData = (HtmlParseData) page.getParseData();
         	 links = htmlParseData.getOutgoingUrls();
         	 text = htmlParseData.getText();
          }
-      
+             
+
+            // System.out.println("Text length: " + text.length());
+            // System.out.println("Html length: " + html.length());
+            // System.out.println("Number of outgoing links: " + links.size());
          
-         //MyVertex creation
-         MyVertex cVertex = new MyVertex(url);
-         MyVertex parentVertex = null;
-         if (parent != null && (parent.compareTo(url) != 0)){ parentVertex = new MyVertex(parent);}
          
-         //Add MyVertex to Graph
-         try { graph.addVertex(cVertex, parentVertex);} 
-         catch (IOException e) { e.printStackTrace(); }  
          
-     
-     	//Create docID
-     	int docID = documents.produceID();
-     
-     	//Extract all metadata/otherdata using Tika on html and non html files
-     	//--Tika basic setup
-     	AutoDetectParser parser = new AutoDetectParser();
-     	BodyContentHandler handler = new BodyContentHandler();
-     	Metadata metadata = new Metadata();
-     	
-     	//--Get input method ready
-		try {
-			TikaInputStream stream;
-			URL tikaURL = new URL(url);
-			stream = TikaInputStream.get(tikaURL);
-			
-	    //--Get output ready
-         	ParseContext context =new ParseContext();
-        
-        //--Parse
-         	parser.parse(stream, handler, metadata, context);
+         
+             //MyVertex creation
+             MyVertex cVertex = new MyVertex(url);
+             MyVertex parentVertex = null;
+             if (parent != null && (parent.compareTo(url) != 0)){ parentVertex = new MyVertex(parent);}
+             
+             //Add MyVertex to Graph
+             try { graph.addVertex(cVertex, parentVertex);} 
+             catch (IOException e) { e.printStackTrace(); }  
+             
+         
+         	//Create docID
+         	int docID = documents.produceID();
+         
+         	//Extract all metadata/otherdata using Tika on html and non html files
+         	//--Tika basic setup
+         	AutoDetectParser parser = new AutoDetectParser();
+         	BodyContentHandler handler = new BodyContentHandler();
+         	Metadata metadata = new Metadata();
          	
-        tikaParseddata = handler.toString();
-        tikaMetadata   = metadata.toString(); 
-		} catch (IOException | SAXException | TikaException e) { e.printStackTrace();} 
-     	
-     	//(Assumed Step) Populate Document
-     	edu.carleton.comp4601.dao.Document newDocument = new edu.carleton.comp4601.dao.Document(docID);
-     	ArrayList<String> linksArray = new ArrayList<String>();
-     	newDocument.setUrl(url);
-     	newDocument.setText(text + "\n\n" + tikaParseddata + "\n\n" + tikaMetadata); //FOR NOW, we will save tika data here...
-     	newDocument.setName("webpage " + docID);
-     	for (WebURL u : links) { linksArray.add(u.getURL().toLowerCase()); }
-     	newDocument.setLinks(linksArray);
-     	
-     	
-     	//Upload Document to MongoDB
-     	documents.add(newDocument);
-                 
-		//Stop adaptive stopwatch...
-		endTime = System.nanoTime();
-		 
-		//Create adaptive pause
-		long stopwatch = (endTime - startTime)/1000000; //converts to milliseconds
-		System.out.println("STOPWATCH TIME: " +  stopwatch + "    " + "s:"+startTime + " e:"+endTime);
-		try { Thread.sleep(stopwatch*10); } 
-		catch (InterruptedException e) { e.printStackTrace(); }
-     }
+         	//--Get input method ready
+			try {
+				TikaInputStream stream;
+				URL tikaURL = new URL(url);
+				stream = TikaInputStream.get(tikaURL);
+				
+		    //--Get output ready
+	         	ParseContext context =new ParseContext();
+	        
+	        //--Parse
+	         	parser.parse(stream, handler, metadata, context);
+	         	
+	         	handler.toString();
+	         	metadata.toString(); 
+			} catch (IOException | SAXException | TikaException e) { e.printStackTrace();} 
+         	
+         	//(Assumed Step) Populate Document
+         	edu.carleton.comp4601.dao.Document newDocument = new edu.carleton.comp4601.dao.Document(docID);
+         	ArrayList<String> linksArray = new ArrayList<String>();
+         	newDocument.setUrl(url);
+         	newDocument.setText(text);
+         	newDocument.setName("webpage " + docID);
+         	for (WebURL u : links) { linksArray.add(u.getURL().toLowerCase()); }
+         	newDocument.setLinks(linksArray);
+         	
+         	
+         	//Upload Document to MongoDB
+         	documents.add(newDocument);
+         	
+          
+                    
+         //Stop adaptive stopwatch...
+         endTime = System.nanoTime();
+         
+         //Create adaptive pause
+         long stopwatch = (endTime - startTime)/1000000; //converts to milliseconds
+         System.out.println("STOPWATCH TIME: " +  stopwatch + "    " + "s:"+startTime + " e:"+endTime);
+         
+         try { Thread.sleep(stopwatch*10); } 
+         catch (InterruptedException e) { e.printStackTrace(); }
+      }
          
              
     }

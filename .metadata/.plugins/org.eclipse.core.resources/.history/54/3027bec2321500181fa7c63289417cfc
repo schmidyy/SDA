@@ -85,9 +85,6 @@ public class MyCrawler extends WebCrawler {
          String text                 = null;
          Set<WebURL> links           = null;
          HtmlParseData htmlParseData = null;
-         String tikaParseddata       = null;
-         String tikaMetadata         = null;
-         
          if (page.getParseData() instanceof HtmlParseData) {
         	 htmlParseData = (HtmlParseData) page.getParseData();
         	 links = htmlParseData.getOutgoingUrls();
@@ -126,15 +123,15 @@ public class MyCrawler extends WebCrawler {
         //--Parse
          	parser.parse(stream, handler, metadata, context);
          	
-        tikaParseddata = handler.toString();
-        tikaMetadata   = metadata.toString(); 
+         	handler.toString();
+         	metadata.toString(); 
 		} catch (IOException | SAXException | TikaException e) { e.printStackTrace();} 
      	
      	//(Assumed Step) Populate Document
      	edu.carleton.comp4601.dao.Document newDocument = new edu.carleton.comp4601.dao.Document(docID);
      	ArrayList<String> linksArray = new ArrayList<String>();
      	newDocument.setUrl(url);
-     	newDocument.setText(text + "\n\n" + tikaParseddata + "\n\n" + tikaMetadata); //FOR NOW, we will save tika data here...
+     	newDocument.setText(text);
      	newDocument.setName("webpage " + docID);
      	for (WebURL u : links) { linksArray.add(u.getURL().toLowerCase()); }
      	newDocument.setLinks(linksArray);

@@ -134,7 +134,7 @@ public class MyCrawler extends WebCrawler {
      	edu.carleton.comp4601.dao.Document newDocument = new edu.carleton.comp4601.dao.Document(docID);
      	ArrayList<String> linksArray = new ArrayList<String>();
      	newDocument.setUrl(url);
-     	newDocument.setText(text + "\n\n" + tikaParseddata + "\n\n" + tikaMetadata); //FOR NOW, we will save tika data here...
+     	newDocument.setText(text + "\n\n" + tikaParseddata + "\n\n" + tikaMetadata);
      	newDocument.setName("webpage " + docID);
      	for (WebURL u : links) { linksArray.add(u.getURL().toLowerCase()); }
      	newDocument.setLinks(linksArray);
