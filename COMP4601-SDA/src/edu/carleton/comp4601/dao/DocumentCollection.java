@@ -36,23 +36,27 @@ public class DocumentCollection {
 	}
 	private static DocumentCollection instance;
 	
-	
+	//Storage Variables
+	MyMongoDB db; 
 	private List<edu.carleton.comp4601.dao.Document> documents;
+	int nextDocID;
 	
-	//Database Stuff
-	MyMongoDB db;
-	
+
+	//Constructor
 	public DocumentCollection(){
 		//Database connection
 		db = MyMongoDB.getInstance();
 		documents = new ArrayList<edu.carleton.comp4601.dao.Document>();
+		populateList();
+		nextDocID = documents.size()-1;
 	}
 	
+	
+	//Getters and Setters
 	public List<edu.carleton.comp4601.dao.Document> getDocuments() {
 		this.populateList();
 		return documents;
 	}
-
 	public void setDocuments(List<edu.carleton.comp4601.dao.Document> documents) {
 		this.documents = documents;
 	}
@@ -176,6 +180,11 @@ public class DocumentCollection {
 			    
 			    System.out.println("Debug Flag 7");
 		   }
+	}
+	
+	public int produceID(){
+		nextDocID = nextDocID + 1;
+		return nextDocID;
 	}
 	
 }

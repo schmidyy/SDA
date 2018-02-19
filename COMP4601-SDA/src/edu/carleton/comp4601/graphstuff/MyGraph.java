@@ -58,6 +58,7 @@ public class MyGraph
 
     public void addVertex(MyVertex childVertex, MyVertex parentVertex) throws IOException{
     	//is it an original vertex
+    	System.out.println("I N S I D E    addVertex   I N S I D E");
     	if(!graph.containsVertex(childVertex.getURL())){
     		
     		//is this the root

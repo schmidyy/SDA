@@ -27,8 +27,8 @@ public class Controller {
 
         CrawlConfig config = new CrawlConfig();
         config.setCrawlStorageFolder(crawlStorageFolder);
-        config.setMaxPagesToFetch(10);
-        //config.setPolitenessDelay(1000);
+        config.setMaxPagesToFetch(100);
+        config.setPolitenessDelay(1000);
         //config.setMaxDepthOfCrawling(10);
         
 
@@ -48,8 +48,8 @@ public class Controller {
         
       
         
-        //controller.addSeed("http://www.ics.uci.edu/~lopes/");
-        //controller.addSeed("http://www.ics.uci.edu/~welling/");
+        //controller.addSeed("https://sikaman.dyndns.org/courses/4601/resources/");
+        //controller.addSeed("https://sikaman.dyndns.org/courses/4601/handouts/");
     	controller.addSeed("http://www.ics.uci.edu/");
     	
         /*
