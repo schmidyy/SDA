@@ -23,6 +23,7 @@ import org.codehaus.jettison.json.JSONObject;
 import edu.carleton.comp4601.dao.*;
 import edu.carleton.comp4601.graphstuff.MyGraph;
 import edu.carleton.comp4601.resources.*;
+import lucenestuff.MyLucene;
 import edu.carleton.comp4601.crawlerstuff.*;
 
 import javax.ws.rs.core.Response;
@@ -44,11 +45,13 @@ public class SearchableDocumentArchive {
  
 	
 	DocumentCollection documents;
+	MyLucene lucene;
 	
 	//Constructor
 	public SearchableDocumentArchive(){
 		name = "COMP4601 Searchable Document Archive V2.1: Luke Daschko and Mat Schmid";
 		documents = DocumentCollection.getInstance();
+		lucene = new MyLucene();
 	}
 	
 	//Testing Functions
@@ -91,6 +94,8 @@ public class SearchableDocumentArchive {
 		 try {
 			Controller.control();
 			MyGraph.getInstance().saveToDB();
+			lucene.fillUp();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,7 +107,6 @@ public class SearchableDocumentArchive {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response makeDocument(edu.carleton.comp4601.dao.Document newDoc) {
-		System.out.println("HIT PUT");
 		//edu.carleton.comp4601.dao.Document newDoc = d.getValue();
 		
 		documents.add(newDoc);

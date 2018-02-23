@@ -61,7 +61,7 @@ public class DocumentCollection {
 		this.documents = documents;
 	}
 	
-	
+	//FIND by ID
 	public edu.carleton.comp4601.dao.Document find(Integer id_in){
 		MongoCursor<Document> cursor = db.getCursor();
 		edu.carleton.comp4601.dao.Document searchDocument = null;
@@ -70,7 +70,6 @@ public class DocumentCollection {
 			Document doc = cursor.next(); //DB Document, not prof Document
 			
 			Integer id_I = (Integer) doc.get("id");
-			System.out.println("HERE IS THE SEARCHED DOCS ID: " + id_I);
 			if(id_in == id_I){
 				searchDocument = new edu.carleton.comp4601.dao.Document(id_I);
 				searchDocument.setLinks((ArrayList<String>) doc.get("links"));
@@ -84,22 +83,43 @@ public class DocumentCollection {
 		return searchDocument;
 	}
 	
-	public void deleteByTag(String tag){
-		System.out.println("FLAG 1");
+	//FIND by URL
+	public edu.carleton.comp4601.dao.Document find(String url_in){
 		MongoCursor<Document> cursor = db.getCursor();
-		System.out.println("FLAG 2");
+		edu.carleton.comp4601.dao.Document searchDocument = null;
+		
+		while (cursor.hasNext()) {
+			Document doc = cursor.next(); //DB Document, not prof Document
+			
+			String url_I = (String) doc.get("url");
+			if(url_in.equals(url_I)){
+				searchDocument = new edu.carleton.comp4601.dao.Document();
+				searchDocument.setScore((int) doc.get("id"));
+				searchDocument.setLinks((ArrayList<String>) doc.get("links"));
+				searchDocument.setName((String) doc.get("name"));
+				searchDocument.setTags((ArrayList<String>) doc.get("tags"));
+				searchDocument.setScore((double) doc.get("score"));
+				searchDocument.setText((String) doc.get("text"));
+				searchDocument.setUrl((String) doc.get("url"));
+			}
+	    }
+		return searchDocument;
+	}
+	
+	//TAG DELETE
+	public void deleteByTag(String tag){
+		MongoCursor<Document> cursor = db.getCursor();
 		while (cursor.hasNext()) {
 			Document doc = cursor.next(); //DB Document, not prof Document
 			ArrayList<String> tags = (ArrayList<String>) doc.get("tags");
-			System.out.println(tags);
 			if(tags.contains(tag)){
-				System.out.println("TAG HIT");
 				Integer id_I = (Integer) doc.get("id");
 				delete(id_I);
 			}
 	    }
 	}
 	
+	//ADD
 	public void add(edu.carleton.comp4601.dao.Document newdoc){
 	
 		//TEST CODE
@@ -122,7 +142,7 @@ public class DocumentCollection {
 		testDoc.setText("Test Text");
 		*/
 		
-		if (find(newdoc.getId()) == null){
+		if (find(newdoc.getUrl()) == null){
 			db.add(newdoc);
 		}
 		else{
@@ -174,11 +194,16 @@ public class DocumentCollection {
 				ourDocument.setTags((ArrayList<String>) doc.get("tags"));
 				ourDocument.setScore((double) doc.get("score"));
 				ourDocument.setUrl((String) doc.get("url"));
+				ourDocument.setText((String) doc.get("text"));
+				ourDocument.setMetadata((ArrayList<String>) doc.get("metadata"));
+				ourDocument.setMetaname((ArrayList<String>) doc.get("metaname"));
+				
 				
 				System.out.println("Debug Flag 6");
 			    documents.add(ourDocument);
 			    
 			    System.out.println("Debug Flag 7");
+			    System.out.println(documents.toString());
 		   }
 	}
 	

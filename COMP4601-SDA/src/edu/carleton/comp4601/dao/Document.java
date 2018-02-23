@@ -22,6 +22,11 @@ public class Document {
 	private String text;
 	private ArrayList<String> tags;
 	private ArrayList<String> links;
+	
+	//Newely Created data we need to carry
+	private ArrayList<String> metadata;
+	private ArrayList<String> metaname;
+	private String date;
 
 	public Document() {
 		tags = new ArrayList<String>();
@@ -92,7 +97,30 @@ public class Document {
 	public void setTags(ArrayList<String> tags) {
 		this.tags = tags;
 	}
+	
+	public void setMetadata(ArrayList<String> metadata) {
+		this.metadata = metadata;	
+	}
+	public ArrayList<String> getMetadata() {
+		return metadata;
+	}
+	
+	public ArrayList<String> getMetaname() {
+		return metadata;
+	}
+	public void setMetaname(ArrayList<String> metaname) {
+		this.metaname = metaname;	
+	}
+	
 
+	public void setDate(String date){
+		this.date = date;
+	}
+	
+	public String getDate(){
+		return date;
+	}
+	
 	public ArrayList<String> getLinks() {
 		return links;
 	}

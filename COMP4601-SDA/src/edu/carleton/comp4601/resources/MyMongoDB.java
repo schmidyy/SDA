@@ -72,6 +72,9 @@ public class MyMongoDB {
 				.append("score", profDoc.getScore())
 				.append("text", profDoc.getText())
 				.append("url", profDoc.getUrl())
+				.append("metaname", profDoc.getMetaname())
+				.append("metadata", profDoc.getMetadata())
+				.append("dateCrawled", profDoc.getDate())
 				.append("tags", profDoc.getTags())
 				.append("links", profDoc.getLinks());
 		

@@ -27,6 +27,7 @@ public class Controller {
 
         CrawlConfig config = new CrawlConfig();
         config.setCrawlStorageFolder(crawlStorageFolder);
+        config.setIncludeBinaryContentInCrawling(true);
         config.setMaxPagesToFetch(100);
         config.setPolitenessDelay(1000);
         //config.setMaxDepthOfCrawling(10);
@@ -47,10 +48,14 @@ public class Controller {
          */
         
       
-        
-        controller.addSeed("https://sikaman.dyndns.org/courses/4601/resources/");
-        controller.addSeed("https://sikaman.dyndns.org/courses/4601/handouts/");
+        //controller.addSeed("http://www.carleton.ca");
+        //controller.addSeed("https://sikaman.dyndns.org/courses/4601/resources/");
+        //controller.addSeed("https://sikaman.dyndns.org/courses/4601/handouts/");
     	//controller.addSeed("http://www.ics.uci.edu/");
+        //controller.addSeed("https://sikaman.dyndns.org/courses/4601/lecture-9/N-0.html");
+        controller.addSeed("http://sikaman.dyndns.org:8888/courses/4601/resources/N-0.html");
+        //controller.addSeed("http://www.carleton.ca");
+        //controller.addSeed("http://www.zdirect.com");
     	
         /*
          * Start the crawl. This is a blocking operation, meaning that your code
