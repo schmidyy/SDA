@@ -45,27 +45,26 @@ public class DeleteTagAction {
 	}
 	
 	public Response filter(String rawtags) throws JSONException{
-		Response res = null;
-		
-		//Step one: search threw document 
-			List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
-			for(int i=0; i<docs.size(); i++){
-				edu.carleton.comp4601.dao.Document docAti = docs.get(i);
-		
-		//Step two: compare each document to see if it has ANY of the tags
-				List<String> taglist = Arrays.asList(rawtags.substring(0, rawtags.length()).split(","));
-				boolean isSubset = docAti.getTags().containsAll(taglist);
-				res = Response.created(uriInfo.getAbsolutePath()).build();
-				if (isSubset==true){
-		//Step three: Delete
-					res =  Response.ok().build();
-					documents.delete(docAti.getId());
-				}
-
-			}	
-		return res;
-	}
-	
-	
+        Response res = null;
+       
+        //Step one: search threw document
+        List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+        for(int i=0; i<docs.size(); i++){
+            edu.carleton.comp4601.dao.Document docAti = docs.get(i);
+       
+            //Step two: compare each document to see if it has ANY of the tags
+            List<String> tagArr = Arrays.asList(rawtags.split(","));
+            res = Response.created(uriInfo.getAbsolutePath()).build();
+           
+            for (String tag : tagArr) {
+                if (docAti.getTags().contains(tag)) {
+                    res =  Response.ok().build();
+                    documents.delete(docAti.getId());
+                }
+            }
+ 
+        }  
+        return res;
+    }
 
 }

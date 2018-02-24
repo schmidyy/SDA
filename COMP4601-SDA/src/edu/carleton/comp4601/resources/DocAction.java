@@ -2,6 +2,7 @@ package edu.carleton.comp4601.resources;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -64,40 +65,22 @@ public class DocAction {
 	}
 	
 	@POST
-	//Should have new Document in parameter...
-	public Response updateDocuments() {
-		Response res;
-		edu.carleton.comp4601.dao.Document oldDocument = documents.find(id);
-		if (oldDocument != null){
-			//Test Code: create newDoc rather than have one passed through params.S
-			
-			edu.carleton.comp4601.dao.Document testDoc = new edu.carleton.comp4601.dao.Document();
-			testDoc.setId(1);
-			ArrayList<String> links = new ArrayList<String>();
-			links.add("Link1U");
-			links.add("Link2U");
-			links.add("Link3U");
-			testDoc.setLinks(links);
-			testDoc.setName("Test Name");
-			ArrayList<String> tags = new ArrayList<String>();
-			tags.add("Tag1U");
-			tags.add("Tag2U");
-			tags.add("Tag3U");
-			testDoc.setTags(tags);
-			testDoc.setScore(66.66);
-			testDoc.setUrl("www.testU.com");
-			testDoc.setText("Test Text UPDATE");
-			
-			
-			documents.update(oldDocument.getId(), testDoc);
-			res = Response.ok().build();
-			System.out.println("Update by id Test, " + "{"+id+"}" + "= Success");
-		}else{
-			res = Response.created(uriInfo.getAbsolutePath()).build();
-		}
-		
-		return res;	
-	}
+    //Should have new Document in parameter...
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDocuments(edu.carleton.comp4601.dao.Document newDoc) {
+        Response res;
+        edu.carleton.comp4601.dao.Document oldDocument = documents.find(id);
+        if (oldDocument != null){  
+            System.out.println("In update");
+            documents.update(oldDocument.getId(), newDoc);
+            res = Response.ok().build();
+            System.out.println("Update by id Test, " + "{"+id+"}" + "= Success");
+        }else{
+            res = Response.created(uriInfo.getAbsolutePath()).build();
+        }
+       
+        return res;
+    }
 	
 	
 

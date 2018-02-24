@@ -100,7 +100,7 @@ public class MyMongoDB {
 		newDocument.append("$set", new BasicDBObject().append("clients", 110));
 		BasicDBObject searchQuery = new BasicDBObject().append("hosting", "hostB");
 
-		coll.update(searchQuery, newDocument);
+		//coll.update(searchQuery, newDocument);
 	}
     
 
