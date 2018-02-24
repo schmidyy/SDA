@@ -1,5 +1,6 @@
 package edu.carleton.comp4601.resources;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -91,6 +92,15 @@ public class MyMongoDB {
     	seriGraph = Marshaller.serializeObject(graph);
     	Document doc = new Document("edge", seriGraph);
     	collGraph.insertOne(doc);
+	}
+	
+	public void updateScore(){
+		
+		BasicDBObject newDocument = new BasicDBObject();
+		newDocument.append("$set", new BasicDBObject().append("clients", 110));
+		BasicDBObject searchQuery = new BasicDBObject().append("hosting", "hostB");
+
+		coll.update(searchQuery, newDocument);
 	}
     
 

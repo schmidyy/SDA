@@ -1,0 +1,66 @@
+package lucenestuff;
+
+import java.util.ArrayList;
+
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DirectedMultigraph;
+
+import edu.carleton.comp4601.graphstuff.MyGraph;
+
+public class PageRankFun {
+	/*
+	 * Steps to Calculating PageRank Score:
+	 * 
+	 * 1. Produce alpha? 
+	 * 		0 < alpha < 1
+	 * 		typically value might be 0.1
+	 * 
+	 * 2. Produce Adjacency Matrix from Graph
+	 * 		1 = edge
+	 * 		0 = no edge
+	 * 		matrix size = NxN (N = number pages visited)
+	 * 
+	 * 3. Remake Adjacency Matrix
+	 * 		if row has no 1's --> replace each element with 1/N
+	 * 		otherwise....
+	 * 			Divide each 1 by the # of 1's in the row
+	 * 			Multiply resulting matrix by 1-alpha
+	 * 			add alpha/N to every entry of the resulting matrix
+	 * 
+	 * 4. Now we have our Probability Matrix
+	 * 
+	 * 5. Do some weird shit
+	 * 		x0 = [1  0  0] (if N = 3)
+	 * 		x1 = first row of Prob Matrix
+	 * 		x2 = multiply the first row of Prob Matrix with Prob Matrix
+	 * 		x3 = mutiply x2 by Prob Matrix
+	 * 		x4 = mltiply x3 by Prob Matrix
+	 * 		eventually you showhow find the perfect xn
+	 * 
+	 * 
+	 * 			
+	 */
+	
+	//OR just use the built in library :D
+	
+	MyGraph graphObj;
+	
+	public PageRankFun(){
+		graphObj = MyGraph.getInstance();
+		
+	}
+	
+	public ArrayList<Double> produceScoreArray(){
+		Graph<String, DefaultEdge> graph = graphObj.getGraph();
+		
+		PageRank<CrawlerVertex, DefaultEdge> ranks = new PageRank<CrawlerVertex, DefaultEdge>(graph);
+			
+			
+			return ranks.getScores();
+		}
+		
+		return scores;
+	}
+
+}

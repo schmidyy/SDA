@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
-<fullyQualifiedTypeName name="com.mongodb.MongoClient"/>
-<fullyQualifiedTypeName name="com.mongodb.DB"/>
-<fullyQualifiedTypeName name="com.mongodb.client.MongoDatabase"/>
-<fullyQualifiedTypeName name="com.mongodb.client.MongoCollection"/>
-<fullyQualifiedTypeName name="javax.websocket.server.PathParam"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.Context"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.UriInfo"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Request"/>
 <fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
@@ -31,7 +24,6 @@
 <fullyQualifiedTypeName name="org.jgrapht.graph.DefaultEdge"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="edu.carleton.comp4601.graphstuff.MyVertex"/>
-<fullyQualifiedTypeName name="edu.carleton.comp4601.graphstuff.MyGraph"/>
 <fullyQualifiedTypeName name="edu.carleton.comp4601.dao.DocumentCollection"/>
 <fullyQualifiedTypeName name="org.apache.tika.parser.AutoDetectParser"/>
 <fullyQualifiedTypeName name="org.apache.tika.sax.BodyContentHandler"/>
@@ -47,8 +39,6 @@
 <fullyQualifiedTypeName name="com.google.protobuf.WireFormat.FieldType"/>
 <fullyQualifiedTypeName name="org.apache.lucene.document.StringField"/>
 <fullyQualifiedTypeName name="lucenestuff.MyLucene"/>
-<fullyQualifiedTypeName name="edu.carleton.comp4601.resources.MyMongoDB"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.apache.lucene.document.Field.Store"/>
 <fullyQualifiedTypeName name="org.jsoup.select.Elements"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -56,4 +46,18 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.apache.lucene.document.TextField"/>
+<fullyQualifiedTypeName name="java.nio.file.Paths"/>
+<fullyQualifiedTypeName name="org.apache.lucene.index.IndexReader"/>
+<fullyQualifiedTypeName name="org.apache.lucene.index.DirectoryReader"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.IndexSearcher"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.TopDocs"/>
+<fullyQualifiedTypeName name="org.apache.lucene.queryparser.classic.QueryParser"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.Query"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.ScoreDoc"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="edu.carleton.comp4601.graphstuff.MyGraph"/>
+<fullyQualifiedTypeName name="org.jgrapht.Graph"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="edu.carleton.comp4601.resources.MyMongoDB"/>
+<fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
 </qualifiedTypeNameHistroy>

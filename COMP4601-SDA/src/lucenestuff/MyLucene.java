@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -14,10 +15,18 @@ import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.CorruptIndexException;
+import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -36,13 +45,17 @@ public class MyLucene {
 
 	
 	private IndexWriter writer;
+	private Directory indexDirectory;
+	private IndexSearcher searcher;
+	
 	private DocumentCollection documents;
+	private final String INDEX_DIR_PATH = "C:\\Users\\iamro\\Desktop\\L";
 	
 	public MyLucene(){
 		try {
 			
 			documents = DocumentCollection.getInstance();
-			bootup("Users/iamro/Desktop");
+			indexBootup(INDEX_DIR_PATH);
 			System.out.println("constructor flag");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -50,16 +63,18 @@ public class MyLucene {
 		}
 	}
 	
-	public void bootup(String indexDirectoryPath) throws IOException {
+	//-----------------------------------------------------------INDEX CODE
+	public void indexBootup(String indexDirectoryPath) throws IOException {
 		System.out.println("bootup flag");
 	      //Lucene Directory (aka where the Lucene docs will be saved)
-		  Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath).toPath()); 
+		  indexDirectory = FSDirectory.open(Paths.get(indexDirectoryPath)); 
 		  
 		  //This is stuff to set up our indexer
 	      Analyzer	analyzer	=	new	StandardAnalyzer();	
 	      IndexWriterConfig iwc	=	new	IndexWriterConfig(analyzer);	
 	      								iwc.setOpenMode(OpenMode.CREATE);	
 	      writer	=	new	IndexWriter(indexDirectory,	iwc);	//indexer
+	      writer.deleteAll();
 	      
 	}
 	
@@ -75,7 +90,7 @@ public class MyLucene {
 		System.out.println("lucene add flag 1" + datadoc.getUrl() + " " +  String.valueOf(datadoc.getId()) + datadoc.getText());
 		
 		//IF STRINGFEILD DOES NOT WORK, TRY ALTERNATIVE AT THIS SITE: https://stackoverflow.com/questions/40699497/what-is-the-difference-between-field-and-stringfield-in-lucene
-		  
+		 
 		document.add(new TextField("url",      datadoc.getUrl(),                  Store.YES)); //WARNING: StringFeild wont have analyzer, so i dont know what that means
 		document.add(new TextField("docID",    String.valueOf(datadoc.getId()),   Store.YES));
 		document.add(new TextField("content",  datadoc.getText(),                 Store.YES));
@@ -90,6 +105,8 @@ public class MyLucene {
 		
 		
 		writer.addDocument(document);
+		writer.commit();
+	    
 	}
 	
 	public void fillUp() throws IOException{
@@ -103,5 +120,54 @@ public class MyLucene {
 		}
 				
 	}
+	
+	public void endLucene() throws IOException{
+		writer.close();
+	}
+	
+	
+	
+	
+	
+	
+	//------------------------------------------------------------SEARCH CODE
+	public void searchBootup() throws IOException{
+		 IndexReader reader = DirectoryReader.open(indexDirectory);
+		 searcher = new IndexSearcher(reader);
+	}
+	
+	public TopDocs queryByID(String id) throws ParseException, IOException{
+		int n = 10;
+		
+		QueryParser qp = new QueryParser("docID", new StandardAnalyzer());
+	    Query idQuery = qp.parse(id);
+	    TopDocs hits = searcher.search(idQuery, n); //find top n hits for query
+	    return hits;
+	}
+	
+	public TopDocs queryByContent(String content) throws ParseException, IOException{
+		int n = 10;
+		
+		QueryParser qp = new QueryParser("content", new StandardAnalyzer());
+	    Query contentQuery = qp.parse(content);
+	    TopDocs hits = searcher.search(contentQuery, n); //find top n hits for query
+	    return hits;
+	}
+	
+	public void testerSearcher() throws IOException, ParseException{
+		 	TopDocs foundDocs2 = queryByContent("apple");
+         
+	        System.out.println("Total Results :: " + foundDocs2.totalHits);
+	         
+	        for (ScoreDoc sd : foundDocs2.scoreDocs)
+	        {
+	            Document d = searcher.doc(sd.doc);
+	            System.out.println(String.format(d.get("content")));
+	        }
+	}
+	
+	
+	
+	
 
 }

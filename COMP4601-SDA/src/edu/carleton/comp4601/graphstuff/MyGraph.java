@@ -89,5 +89,9 @@ public class MyGraph
     	db.storeGraph(graph);
     }
     
+    public DirectedMultigraph<String, DefaultEdge> getGraph(){
+    	return graph;
+    }
+    
     
 }
