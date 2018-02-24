@@ -39,40 +39,36 @@ public class SearchTagAction {
 	
 	//Cleans tags into list of tags
 	@GET
-	@Path("{tags}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String search(@PathParam("tags") String rawtags) {
-		
-		String jsonString="";
-		try {
-			jsonString = filter(rawtags);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return jsonString;
-	}
-	
-	public String filter(String rawtags) throws JSONException{
-		JSONObject json = new JSONObject();
-		int jsonindex = 0;
-		//Step one: search threw document 
-			List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
-			for(int i=0; i<docs.size(); i++){
-				edu.carleton.comp4601.dao.Document docAti = docs.get(i);
-		
-		//Step two: compare each document to see if it has ANY of the tags
-				List<String> taglist = Arrays.asList(rawtags.substring(0, rawtags.length()).split(","));
-				boolean isSubset = docAti.getTags().containsAll(taglist);
-				if (isSubset==true){
-		//Step three: Append documents we want to JSON object
-					jsonindex += 1;
-					json.put("index " + jsonindex, docAti.jsonify().toString());
-				}
-
-			}	
-		return json.toString();
-	}
+    @Path("{tags}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject search(@PathParam("tags") String rawtags) {
+        JSONObject json = null;
+        try {
+            json = filter(rawtags);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return json;
+    }
+   
+    public JSONObject filter(String rawtags) throws JSONException{
+        JSONObject json = new JSONObject();
+        //Step one: search threw document
+        List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+        for(int i=0; i<docs.size(); i++){
+            edu.carleton.comp4601.dao.Document docAti = docs.get(i);
+            //Step two: compare each document to see if it has ANY of the tags
+            List<String> tagArr = Arrays.asList(rawtags.split(","));
+           
+            for (String tag : tagArr) {
+                if (docAti.getTags().contains(tag)) {
+                    json.put(String.valueOf(docAti.getId()), docAti.jsonify());
+                }
+            }
+        }  
+        return json;
+    }
 	
 	
 	

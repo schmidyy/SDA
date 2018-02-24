@@ -70,7 +70,7 @@ public class DocumentCollection {
 			Document doc = cursor.next(); //DB Document, not prof Document
 			
 			Integer id_I = (Integer) doc.get("id");
-			if(id_in == id_I){
+			if(id_in.intValue() == id_I.intValue()){
 				searchDocument = new edu.carleton.comp4601.dao.Document(id_I);
 				searchDocument.setLinks((ArrayList<String>) doc.get("links"));
 				searchDocument.setName((String) doc.get("name"));
