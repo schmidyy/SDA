@@ -16,6 +16,7 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
+import org.apache.lucene.queryparser.classic.ParseException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -24,11 +25,13 @@ import edu.carleton.comp4601.dao.*;
 import edu.carleton.comp4601.graphstuff.MyGraph;
 import edu.carleton.comp4601.resources.*;
 import lucenestuff.MyLucene;
+import lucenestuff.PageRankFun;
 import edu.carleton.comp4601.crawlerstuff.*;
 
 import javax.ws.rs.core.Response;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -51,7 +54,7 @@ public class SearchableDocumentArchive {
 	public SearchableDocumentArchive(){
 		name = "COMP4601 Searchable Document Archive V2.1: Luke Daschko and Mat Schmid";
 		documents = DocumentCollection.getInstance();
-		lucene = new MyLucene();
+		lucene = MyLucene.getInstance();
 	}
 	
 	//Testing Functions
@@ -94,10 +97,10 @@ public class SearchableDocumentArchive {
 		 try {
 			Controller.control();
 			MyGraph.getInstance().saveToDB();
+			lucene.indexBootup(true);
 			lucene.fillUp();
-			lucene.searchBootup();
-			lucene.testerSearcher();
-			lucene.endLucene();
+			
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -132,4 +135,68 @@ public class SearchableDocumentArchive {
 	public DeleteTagAction deleteTaggedDocuments(){
 		return new DeleteTagAction(uriInfo, request);
 	}
+	
+	@GET
+	@Path("noboost")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response alterBoostToOne(){
+		lucene.noboost();
+		return Response.ok().build();
+	}
+	
+	@GET
+	@Path("boost")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response alterBoostPageRank(){
+		System.out.println("BOOST HIT SDA");
+		PageRankFun pr = new PageRankFun();
+		documents.boost(pr.produceScoreArray());
+		
+		return Response.ok().build();
+	}
+	
+	@GET
+	@Path("pagerank")
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject showPagerank(){
+		JSONObject arr = new JSONObject();
+		PageRankFun pr = new PageRankFun();
+        for (String key : pr.produceScoreArray().keySet()) {
+            try {
+				arr.put(key, pr.produceScoreArray().get(key));
+			} catch (JSONException e) {e.printStackTrace();}
+        }
+        return arr;
+	}
+	
+	@GET
+	@Path("testsearch/{term}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject showSearch(@PathParam("term") String term){
+		JSONObject hellya = new JSONObject();
+		ArrayList<edu.carleton.comp4601.dao.Document> docs = null;
+			try {
+				lucene.searchBootup();
+				docs = lucene.queryByContent2(term);
+				lucene.endLucene();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			for (edu.carleton.comp4601.dao.Document doc: docs) {
+	            try {
+					hellya.put(String.valueOf(doc.getId()), doc.jsonify());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        }
+	        return hellya;
+			
+	
+	}
+	
+	
 }

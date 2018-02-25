@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -94,16 +95,26 @@ public class MyMongoDB {
     	collGraph.insertOne(doc);
 	}
 	
-	public void updateScore(){
+	
+	public void updateScore(Map<String, Double> scores){
+		System.out.println("BOOST HIT MONGO");
+		for(String key : scores.keySet()){
+			System.out.println("IN UPDATE SCORE");
+			Bson filter = new Document("url", key);
+			Bson newValue = new Document("score", scores.get(key));
+			Bson updateOperationDocument = new Document("$set", newValue);
+			coll.updateOne(filter, updateOperationDocument);
+		}
 		
-		BasicDBObject newDocument = new BasicDBObject();
-		newDocument.append("$set", new BasicDBObject().append("clients", 110));
-		BasicDBObject searchQuery = new BasicDBObject().append("hosting", "hostB");
-
-		coll.update(searchQuery, newDocument);
 	}
-    
-
+	/*
+	public DirectedMultigraph<String, DefaultEdge> getGraph(){
+		DirectedMultigraph<String, DefaultEdge> newgraph;
+		
+		Document myDoc = collGraph.find(eq("_id", "test")).first();
+		return newgraph
+	}
+	*/
 
 	
 

@@ -1,0 +1,101 @@
+package edu.carleton.comp4601.graphstuff;
+
+import java.io.IOException;
+import java.net.*;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+//import org.jgrapht.*;
+//import org.jgrapht.graph.*;
+//import org.jgrapht.defaultedge;
+
+import org.bson.Document;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DirectedMultigraph;
+
+import com.mongodb.MongoClient; 
+import com.mongodb.client.MongoCollection; 
+import com.mongodb.client.MongoDatabase; 
+
+import edu.carleton.comp4601.graphstuff.MyVertex;
+import edu.carleton.comp4601.resources.MyMongoDB;
+
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MyGraph
+{
+	//Graph Variables
+	private static DirectedMultigraph<String, DefaultEdge> graph;
+    
+	//Database Variables
+	private MyMongoDB db;
+
+	//Singleton Variable+Methods
+	private static MyGraph instance = null;
+	public static void setInstance(MyGraph instance) { MyGraph.instance = instance; }
+    public static MyGraph getInstance() {
+    	 if(instance == null) { instance = new MyGraph(); }
+	     return instance;
+    }
+    
+	public MyGraph(){
+    	graph = createGraph();
+    	
+    	db = MyMongoDB.getInstance();
+    	
+    			
+    } 
+
+	
+    private DirectedMultigraph<String, DefaultEdge> createGraph(){
+
+    	DirectedMultigraph<String, DefaultEdge> g = new DirectedMultigraph<String, DefaultEdge>(DefaultEdge.class);
+        return g;
+    }
+
+    public void addVertex(MyVertex childVertex, MyVertex parentVertex) throws IOException{
+    	//is it an original vertex
+    	System.out.println("I N S I D E    addVertex   I N S I D E");
+    	if(!graph.containsVertex(childVertex.getURL())){
+    		
+    		//is this the root
+	    	if(parentVertex == null){
+	    		System.out.println("THIS IS THE ROOT LOCATION!");
+	    		graph.addVertex(childVertex.getURL()); 
+	       	}
+	    	
+	    	//its not the root
+	    	else{
+	    		//does the childs parent exist (it should)
+	    		System.out.println("PARENT URL: " + parentVertex.getURL());
+	    		graph.addVertex(childVertex.getURL());
+	    		graph.addEdge(parentVertex.getURL(), childVertex.getURL());
+	    		
+	    		
+	    		
+	    	}
+    	}
+    	//Crude Visualization
+    	//System.out.println("MY GRAPH: " + graph.edgeSet().toString());
+    	
+    	
+    }
+    public void saveToDB() throws IOException{
+    	//Visualization Code
+		GraphLayoutVisualizer.visualizeGraph(graph);
+    	db.storeGraph(graph);
+    }
+    
+    public void decereal(){
+    	DirectedMultigraph<String, DefaultEdge> newgraph = db.getGraph();
+    }
+    
+    public DirectedMultigraph<String, DefaultEdge> getGraph(){
+    	return graph;
+    }
+    
+    
+}

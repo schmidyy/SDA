@@ -3,6 +3,7 @@ package edu.carleton.comp4601.dao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -70,7 +71,7 @@ public class DocumentCollection {
 			Document doc = cursor.next(); //DB Document, not prof Document
 			
 			Integer id_I = (Integer) doc.get("id");
-			if(id_in == id_I){
+			if(id_in.intValue() == id_I.intValue()){
 				searchDocument = new edu.carleton.comp4601.dao.Document(id_I);
 				searchDocument.setLinks((ArrayList<String>) doc.get("links"));
 				searchDocument.setName((String) doc.get("name"));
@@ -173,19 +174,19 @@ public class DocumentCollection {
 	}
 	
 	public void populateList(){
-		System.out.println("Debug Flag 1");
+	
 		if (!documents.isEmpty()){
 			documents.clear(); //this function will repopulate the list so we need to delete whats inside to avoid duplication
 		}
-		System.out.println("Debug Flag 2");
+	
 		MongoCursor<Document> cursor = db.getCursor();
 		
-		System.out.println("Debug Flag 3");
+
 			while (cursor.hasNext()) {
-				System.out.println("Debug Flag 4");
+		
 				Document doc = cursor.next(); //not Prof made Document class
 				
-				System.out.println("Debug Flag 5");
+	
 				edu.carleton.comp4601.dao.Document ourDocument = new  edu.carleton.comp4601.dao.Document();
 				
 				ourDocument.setId((Integer) doc.get("id"));
@@ -199,17 +200,21 @@ public class DocumentCollection {
 				ourDocument.setMetaname((ArrayList<String>) doc.get("metaname"));
 				
 				
-				System.out.println("Debug Flag 6");
+			
 			    documents.add(ourDocument);
 			    
-			    System.out.println("Debug Flag 7");
-			    System.out.println(documents.toString());
+			  
 		   }
 	}
 	
 	public int produceID(){
 		nextDocID = nextDocID + 1;
 		return nextDocID;
+	}
+	
+	public void boost(Map<String, Double> scores){
+		System.out.println("BOOST HIT Collection");
+		db.updateScore(scores);
 	}
 	
 }
