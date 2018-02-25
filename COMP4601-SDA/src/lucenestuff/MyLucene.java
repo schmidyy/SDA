@@ -5,6 +5,8 @@ import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -21,11 +23,17 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.BooleanQuery.Builder;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -42,6 +50,18 @@ import edu.carleton.comp4601.resources.MyMongoDB;
 
 
 public class MyLucene {
+	
+	//Singelton Stuff
+		public static void setInstance(MyLucene instance) {
+			MyLucene.instance = instance;
+		}
+		public static MyLucene getInstance() {
+			if (instance == null)
+				instance = new MyLucene();
+			return instance;
+		}
+		private static MyLucene instance;
+		
 
 	
 	private IndexWriter writer;
@@ -51,30 +71,29 @@ public class MyLucene {
 	private DocumentCollection documents;
 	private final String INDEX_DIR_PATH = "C:\\Users\\iamro\\Desktop\\L";
 	
+	private boolean boost = true;
+	
 	public MyLucene(){
-		try {
-			
+		
 			documents = DocumentCollection.getInstance();
-			indexBootup(INDEX_DIR_PATH);
+			//indexBootup(INDEX_DIR_PATH);
 			System.out.println("constructor flag");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	
 	//-----------------------------------------------------------INDEX CODE
-	public void indexBootup(String indexDirectoryPath) throws IOException {
+	public void indexBootup(boolean del) throws IOException {
 		System.out.println("bootup flag");
 	      //Lucene Directory (aka where the Lucene docs will be saved)
-		  indexDirectory = FSDirectory.open(Paths.get(indexDirectoryPath)); 
+		  indexDirectory = FSDirectory.open(Paths.get(INDEX_DIR_PATH)); 
 		  
 		  //This is stuff to set up our indexer
 	      Analyzer	analyzer	=	new	StandardAnalyzer();	
 	      IndexWriterConfig iwc	=	new	IndexWriterConfig(analyzer);	
 	      								iwc.setOpenMode(OpenMode.CREATE);	
 	      writer	=	new	IndexWriter(indexDirectory,	iwc);	//indexer
-	      writer.deleteAll();
+	      if(del)
+	    	  writer.deleteAll();
 	      
 	}
 	
@@ -91,24 +110,46 @@ public class MyLucene {
 		
 		//IF STRINGFEILD DOES NOT WORK, TRY ALTERNATIVE AT THIS SITE: https://stackoverflow.com/questions/40699497/what-is-the-difference-between-field-and-stringfield-in-lucene
 		 
-		document.add(new TextField("url",      datadoc.getUrl(),                  Store.YES)); //WARNING: StringFeild wont have analyzer, so i dont know what that means
-		document.add(new TextField("docID",    String.valueOf(datadoc.getId()),   Store.YES));
-		document.add(new TextField("content",  datadoc.getText(),                 Store.YES));
+		TextField url     = new TextField("url",      datadoc.getUrl(),                  Store.YES); //WARNING: StringFeild wont have analyzer, so i dont know what that means
+		TextField docID   = new TextField("docID",    String.valueOf(datadoc.getId()),   Store.YES);
+		TextField content = new TextField("content",  datadoc.getText(),                 Store.YES);
 		System.out.println("lucene add flag 2");
 		//Gotta have that feild for each metadata
+		
+		
+		if(!boost){
+			url.setBoost(1);
+			docID.setBoost(1);
+			content.setBoost(1);
+			
+		}else{
+			url.setBoost((float) datadoc.getScore());
+			docID.setBoost((float) datadoc.getScore());
+			content.setBoost((float) datadoc.getScore());
+			
+		}
+		
+		document.add(url);
+		document.add(content);
+		document.add(docID);
+		
 		for(int i = 0; i<datadoc.getMetadata().size(); i++){
 			System.out.println("lucene add flag 3." + i);
 			document.add(new StringField(datadoc.getMetaname().get(i), datadoc.getMetadata().get(i), Store.YES));
 		}
+		
 		System.out.println("lucene add flag 4");
 		//document.add(new StringField("Metadata", (String) mongoDoc.get("meta"), Field.Store.YES));
 		
-		
+		System.out.println(datadoc.getUrl());
+		System.out.println(datadoc.getId());
+		System.out.println(datadoc.getText());
 		writer.addDocument(document);
 		writer.commit();
 	    
 	}
 	
+	//Mongo->Lucene
 	public void fillUp() throws IOException{
 		System.out.println("fillup start flag");
 		List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
@@ -145,26 +186,107 @@ public class MyLucene {
 	    return hits;
 	}
 	
+	
+	public ArrayList<edu.carleton.comp4601.dao.Document> queryByContent2(String content) throws IOException{
+		QueryParser qp = new QueryParser("content", new StandardAnalyzer());
+		
+		content = content.substring(content.indexOf("i:")+2);
+		String[] contentArray = content.split("\\+");
+		 
+		 System.out.println(contentArray[0]);
+		 Query newquery = new TermQuery(new Term("content", contentArray[0]));
+		 BooleanQuery booleanQuery = new BooleanQuery.Builder().add(newquery, BooleanClause.Occur.MUST).build();
+		
+		
+		/*
+		 for(int i = 0; i<contentArray.length; i++){
+			 System.out.println("for : " + contentArray[i]);
+			Query newquery = new TermQuery(new Term("content", contentArray[i]));
+			booleanQuery.add(newquery, BooleanClause.Occur.MUST);
+		 }
+		 BooleanQuery madeQuery = booleanQuery.build();
+		 */
+	
+		 TopDocs results = searcher.search(booleanQuery, 10);
+		 ScoreDoc[] printResults = results.scoreDocs;
+		
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		
+		
+		 System.out.println("\n\nQuery: ");
+		 for (ScoreDoc sd : printResults)
+	        {
+	            Document d = searcher.doc(sd.doc);
+	            System.out.println(sd.score);
+	            System.out.println(String.format(d.get("content")));
+	            System.out.println(Integer.valueOf((String.format(d.get("docID"))) ));
+	            arr.add( Integer.valueOf((String.format(d.get("docID"))) ));
+	            
+	        }
+		 
+		 return idToDoc(arr);
+	}
+	
+	public ArrayList<edu.carleton.comp4601.dao.Document> idToDoc(ArrayList<Integer> ids){
+		documents.getDocuments();
+		ArrayList<edu.carleton.comp4601.dao.Document> searchdocuments = new ArrayList<edu.carleton.comp4601.dao.Document>();
+		
+		for(int i = 0; i<documents.getDocuments().size(); i++){
+			int documentID = documents.getDocuments().get(i).getId();
+			if(ids.contains(documentID)){
+				searchdocuments.add(documents.getDocuments().get(i));}
+		}
+		return searchdocuments;
+	}
+	
+	
+	//only tested for one word at a time
 	public TopDocs queryByContent(String content) throws ParseException, IOException{
-		int n = 10;
+		int n = 1000;
 		
 		QueryParser qp = new QueryParser("content", new StandardAnalyzer());
+		
+		content = content.substring(content.indexOf("i:")+2);
 	    Query contentQuery = qp.parse(content);
 	    TopDocs hits = searcher.search(contentQuery, n); //find top n hits for query
+	    ScoreDoc[] sendback = hits.scoreDocs;
+	    //ArrayList<edu.carleton.COMP4601.assignment2.dao.Document> docs = getDocs(hits, searcher);
+	    
 	    return hits;
 	}
 	
+	public void search(String searchme){
+		
+	}
+	
 	public void testerSearcher() throws IOException, ParseException{
-		 	TopDocs foundDocs2 = queryByContent("apple");
+		 	TopDocs foundDocs2 = queryByContent("i:apple");
          
 	        System.out.println("Total Results :: " + foundDocs2.totalHits);
 	         
 	        for (ScoreDoc sd : foundDocs2.scoreDocs)
 	        {
 	            Document d = searcher.doc(sd.doc);
+	            System.out.println(sd.score);
 	            System.out.println(String.format(d.get("content")));
 	        }
 	}
+	
+	public void noboost(){
+		boost = false;
+		try {
+			writer.deleteAll();
+			fillUp();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	}
+	
+	
+	
 	
 	
 	

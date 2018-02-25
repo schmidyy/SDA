@@ -89,6 +89,13 @@ public class MyGraph
     	db.storeGraph(graph);
     }
     
+    /*
+    public DirectedMultigraph<String, DefaultEdge> decereal(){
+    	DirectedMultigraph<String, DefaultEdge> newgraph = db.getGraph();
+    	return  newgraph;
+    }
+    */
+    
     public DirectedMultigraph<String, DefaultEdge> getGraph(){
     	return graph;
     }

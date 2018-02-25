@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.ws.rs.core.UriInfo"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.Request"/>
-<fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
-<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
-<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
-<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
 <fullyQualifiedTypeName name="com.mongodb.DBObject"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCollection"/>
@@ -57,7 +50,14 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="edu.carleton.comp4601.graphstuff.MyGraph"/>
 <fullyQualifiedTypeName name="org.jgrapht.Graph"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="edu.carleton.comp4601.resources.MyMongoDB"/>
 <fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="lucenestuff.PageRankFun"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.TermQuery"/>
+<fullyQualifiedTypeName name="org.apache.lucene.index.Term"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.BooleanQuery"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.BooleanClause"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.PhraseQuery"/>
 </qualifiedTypeNameHistroy>
