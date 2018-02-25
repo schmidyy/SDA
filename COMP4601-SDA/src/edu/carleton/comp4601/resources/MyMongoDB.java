@@ -116,6 +116,8 @@ public class MyMongoDB {
 	}
 	*/
 
-	
+	public void resetCollection() {
+        coll.drop();
+    }
 
 }

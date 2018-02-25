@@ -36,6 +36,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
+//COMP4601 Searchable Document Archive V1.0: Luke Daschko and Mat Schmid
+
 
 @Path("/sda")
 public class SearchableDocumentArchive {
@@ -52,7 +54,7 @@ public class SearchableDocumentArchive {
 	
 	//Constructor
 	public SearchableDocumentArchive(){
-		name = "COMP4601 Searchable Document Archive V2.1: Luke Daschko and Mat Schmid";
+		name = "COMP4601 Searchable Document Archive V1.0: Luke Daschko and Mat Schmid";
 		documents = DocumentCollection.getInstance();
 		lucene = MyLucene.getInstance();
 	}
@@ -77,10 +79,10 @@ public class SearchableDocumentArchive {
 	
 	}
 	
-	
+	// Comment this function to get XML response
 	@GET
     @Path("documents")
-    @Produces(MediaType.APPLICATION_JSON)  //remove if returning array
+    @Produces(MediaType.APPLICATION_JSON) 
     public JSONObject getDocuments() throws JSONException {
         List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
         JSONObject arr = new JSONObject();
@@ -88,6 +90,19 @@ public class SearchableDocumentArchive {
             arr.put(String.valueOf(doc.getId()), doc.jsonify());
         }
         return arr;
+    }
+	
+	@GET
+    @Path("documents")
+    @Produces(MediaType.TEXT_XML)  
+    public String getDocumentsXML() throws JSONException {
+        List<edu.carleton.comp4601.dao.Document> docs = documents.getDocuments();
+        String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<documents>";
+        for (edu.carleton.comp4601.dao.Document doc: docs) {
+            xmlString += doc.xmlify();
+        }
+        xmlString += "\n</documents>";
+        return xmlString;
     }
 	
 	@GET
@@ -137,6 +152,14 @@ public class SearchableDocumentArchive {
 	}
 	
 	@GET
+    @Path("reset")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String resetDB() {
+        documents.getDB().resetCollection();
+        return "{ DB has been reset }";
+    }
+	
+	@GET
 	@Path("noboost")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response alterBoostToOne(){
@@ -169,8 +192,9 @@ public class SearchableDocumentArchive {
         return arr;
 	}
 	
+	// Comment this function to get XML response
 	@GET
-	@Path("testsearch/{term}")
+	@Path("lucenesearch/{term}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public JSONObject showSearch(@PathParam("term") String term){
 		JSONObject hellya = new JSONObject();
@@ -198,5 +222,27 @@ public class SearchableDocumentArchive {
 	
 	}
 	
+	@GET
+	@Path("lucenesearch/{term}")
+	@Produces(MediaType.TEXT_XML)
+	public String showSearchXML(@PathParam("term") String term){
+		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<documents>";
+		ArrayList<edu.carleton.comp4601.dao.Document> docs = null;
+			try {
+				lucene.searchBootup();
+				docs = lucene.queryByContent2(term);
+				lucene.endLucene();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			for (edu.carleton.comp4601.dao.Document doc: docs) {
+				xmlString += doc.xmlify();
+				
+	        }
+			xmlString += "\n</documents>";
+	        return xmlString;
+	}
 	
 }

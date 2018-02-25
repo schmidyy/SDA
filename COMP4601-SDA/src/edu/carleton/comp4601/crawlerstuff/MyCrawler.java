@@ -4,8 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -171,6 +177,7 @@ public class MyCrawler extends WebCrawler {
      	newDocument.setUrl(url);
      	newDocument.setName("webpage " + docID);
      	newDocument.setText(content);
+     	newDocument.setTags(getMostCommonWordsFromContent(content));
      	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
         Date date = new Date();   
      	newDocument.setDate(formatter.format(date));
@@ -201,6 +208,41 @@ public class MyCrawler extends WebCrawler {
 		try { Thread.sleep(stopwatch*0); } 
 		catch (InterruptedException e) { e.printStackTrace(); }
      }
+     
+     public ArrayList<String> getMostCommonWordsFromContent(String content) {
+         ArrayList<String> contentArray = new  ArrayList<String>(Arrays.asList(content.split("\\W+")));
+         Map<String, Integer> map = new HashMap<>();
+ 
+         for (String t : contentArray) {
+             Integer val = map.get(t);
+             map.put(t, val == null ? 1 : val + 1);
+         }
          
+         List<Entry<String, Integer>> sortedDict = entriesSortedByValues(map);
+         ArrayList<String> top5 = new ArrayList<String>();
+         if (sortedDict.size() > 5) {
+             for(int i=0; i<5; i++) {
+                 top5.add(sortedDict.get(i).getKey());
+             }
+         } else {
+             top5.add("No tags found");
+         }
+         
+         
+         return top5;
+     }
+     
+     static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
+ 
+        List<Entry<K,V>> sortedEntries = new ArrayList<Entry<K,V>>(map.entrySet());
+        Collections.sort(sortedEntries, new Comparator<Entry<K,V>>() {
+                 @Override
+                 public int compare(Entry<K,V> e1, Entry<K,V> e2) {
+                     return e2.getValue().compareTo(e1.getValue());
+                 }
+             }
+        );
+        return sortedEntries;
+     }
              
-    }
+}

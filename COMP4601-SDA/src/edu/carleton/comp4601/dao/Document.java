@@ -159,6 +159,21 @@ public class Document {
 		return json;
 	}
 	
+	public String xmlify() {
+		String xmlString = "";
+		xmlString += "\n\t<document>\n\t\t<id>" + String.valueOf(id) + "</id>\n\t\t<score>" + String.valueOf(score) + "</score>\n\t\t<url>" + url + 
+				"</url>\n\t\t<name>" + name + "</name>\n\t\t<text>" + text + "</text>\n\t\t<tags>";
+		for (String tag : tags) {
+			xmlString += "\n\t\t\t<tag>" + tag + "</tag>";
+		}
+		xmlString += "\n\t\t</tags>\n\t\t<links>";
+		for (String link : links) {
+			xmlString += "\n\t\t\t<link>" + link + "</link>";
+		}
+		xmlString += "\n\t\t</links>\n\t</document>";
+		return xmlString;
+	}
+	
 	public void documentify(JSONObject in_json) throws JSONException {
 		
 		//Step One: Fill up this Docuemnt with easy datatypes 

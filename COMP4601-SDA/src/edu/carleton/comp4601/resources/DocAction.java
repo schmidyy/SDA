@@ -52,16 +52,31 @@ public class DocAction {
 		return res;
 	}
 	
+//	@GET
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public JSONObject getDocument() throws JSONException {
+//		edu.carleton.comp4601.dao.Document getDoc = documents.find(id);
+//		if (getDoc == null){
+//			throw new RuntimeException("No such user: " + id);
+//		}else{
+//			System.out.println("GET Success!: " + id);
+//		}
+//		return getDoc.jsonify();
+//	}
+	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public JSONObject getDocument() throws JSONException {
+	@Produces(MediaType.TEXT_XML)
+	public String getDocumentXML() throws JSONException {
 		edu.carleton.comp4601.dao.Document getDoc = documents.find(id);
 		if (getDoc == null){
 			throw new RuntimeException("No such user: " + id);
 		}else{
 			System.out.println("GET Success!: " + id);
 		}
-		return getDoc.jsonify();
+		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<documents>";
+		xmlString += getDoc.xmlify();
+		xmlString += "\n</documents>";
+		return xmlString;
 	}
 	
 	@POST

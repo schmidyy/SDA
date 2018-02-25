@@ -58,6 +58,11 @@ public class DocumentCollection {
 		this.populateList();
 		return documents;
 	}
+	
+	public MyMongoDB getDB() {
+        return db;
+    }
+	
 	public void setDocuments(List<edu.carleton.comp4601.dao.Document> documents) {
 		this.documents = documents;
 	}
